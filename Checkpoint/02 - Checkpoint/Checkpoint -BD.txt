@@ -1,0 +1,56 @@
+--Vinicius Rodrigues Brito RM: 97473
+--Gustavo Santos Nascimento RM: 96687
+
+
+--1)
+create table Cds
+(Codigo number(3) constraint cod_pk primary key,
+Nome varchar(50) constraint nom_nn not null,
+DataCompra date,
+Valorpago number(10,2),
+LocalCompra varchar(20),
+Album char(1));
+
+create table musicas
+(CodigoCD number(3) constraint cd_cod_pk primary key,
+Numero number(2) constraint num_nn not null,
+Nome varchar(50),
+Artista varchar(50),
+Tempo number(4));
+
+--2)
+insert into Cds values (1,'Mercury','10-Jan-00',35.00,'Submarino','V');
+insert into Cds values (2,'Meteora','25-Jan-04',70.00,'Americanas','F');
+insert into Cds values (3,'Iowa','28-Nov-01',10.00,'Shoope','V');
+insert into Cds values (4,'Ambitions','30-Nov-16',35.00,'Casas Bahia','F');
+
+insert into musicas values(1,1,'Enemy','Imagine Dragons',2);
+insert into musicas values(2,1,'Bones','Imagine Dragons',3);
+
+insert into musicas values(3,2,'Numb','Linkin Park',1);
+insert into musicas values(4,2,'Faint','Linkin Park',5);
+
+insert into musicas values(5,3,'Gently','Slipknot',3);
+insert into musicas values(6,3,'515','Slipknot',5);
+
+insert into musicas values(7,4,'Bon Voyage','José Pedro',6);
+insert into musicas values(8,4,'Listen','José Pedro',2);
+
+--3)
+select Nome, DataCompra from cds order by nome;
+
+--4)
+select nome from musicas
+where numero = 1 and tempo between 2 and 3;
+
+--5)
+select nome, numero, tempo from musicas
+where CodigoCD = 5
+
+--6)
+select nome from musicas 
+where artista = 'José Pedro'
+
+--7)
+select nome from cds
+where LocalCompra = 'Submarino'

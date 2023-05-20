@@ -9,8 +9,12 @@ drop table produto cascade constraints;
 create table cliente 
 (cod_clie number(4) constraint clie_cd_pk primary key, 
 nome_clie varchar2(20) constraint clie_no_nn not null, 
-endereco varchar2(30),cidade varchar2(15), 
-cep char(8),uf char(2),cnpj char(16),ie char(12));
+endereco varchar2(30),
+cidade varchar2(15), 
+cep char(8),
+uf char(2),
+cnpj char(16),
+ie char(12));
 
 create table vendedor 
 (cod_ven number(4) constraint ven_cod_pk primary key, 

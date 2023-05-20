@@ -1,62 +1,74 @@
 //----------------------------Aula 9 - 19/04 - gabarito exercícios----------------------------
 
-5.2) select nome_clie, uf  from cliente where upper(uf) = 'SP';
-
-5.3) select descricao, val_unit from produto where val_unit < 1.5
-     order by 2
-
-5.4) select num_pedido, cod_clie from pedido where cod_clie > 500 order by 2
-
-5.5) crie um relatório que exiba o código do cliente e seu nome, desde que
+5.5)crie um relatório que exiba o código do cliente e seu nome, desde que
     estejam no intervalo de código com início em 180 até 720 (inclusive)
+
     select cod_clie, nome_clie from cliente
     where cod_clie >= 180 and cod_clie <= 720 order by 1
     
 5.6)crie um relatório que exiba o código do cliente e seu nome, desde que
     estejam no intervalo de código com início em 180 até 720
+
     select cod_clie, nome_clie from cliente
     where cod_clie > 180 and cod_clie < 720 order by 1
     
-5.7) crie um relatório que exiba o nome do cliente, desde que
+5.7)crie um relatório que exiba o nome do cliente, desde que
     estejam no intervalo de B até F (inclusive)
+
     select nome_clie from cliente
     where upper(nome_clie) >= 'B' and upper(nome_clie) <= 'G'
     order by 1;
 
-5.8) quem são os vendedores com salário superior a R$2.000,00, que pertençam a 
-     comissão A ou C e que seu código esteja no intervalo de 500 até 800
+5.8)quem são os vendedores com salário superior a R$2.000,00, que pertençam a 
+    comissão A ou C e que seu código esteja no intervalo de 500 até 800
+
     select * from vendedor where salario_fixo > 2000;
+
     select * from vendedor where salario_fixo > 2000 and
     comissao != 'B';
+
     select * from vendedor where salario_fixo > 2000 and
     comissao != 'B' and cod_ven > 500 and cod_ven < 800;
+
     select * from vendedor where salario_fixo > 2000 and
     (comissao = 'A' or comissao = 'C') and cod_ven > 500 and cod_ven < 800;
     
-Operadores de BD:
+OPERADORES DE BANCO DE DADOS:
+
+			//-------------------BETWEEN-------------------//
+
     between (intervalo sequencial)-> coluna1 between valor inicial and valor final
     exemplo:
-usando operador tradicional: select cod_clie, nome_clie from cliente
-                 where cod_clie >= 180 and cod_clie <= 720 order by 1
 
-usando operador bd: select cod_clie, nome_clie from cliente
-           where cod_clie between 180 and 720 order by 1
+--usando operador tradicional: 	select cod_clie, nome_clie from cliente
+                 			where cod_clie >= 180 and cod_clie <= 720 order by 1
 
-usando o operador not: coluna1 not between valor inicial and valor final
-        select cod_clie, nome_clie from cliente
-        where cod_clie not between 180 and 720 order by 1
+--usando operador bd: 	select cod_clie, nome_clie from cliente
+           		    	where cod_clie between 180 and 720 order by 1
+
+--usando o operador not: coluna1 not between valor inicial and valor final
+
+        			select cod_clie, nome_clie from cliente
+        			where cod_clie not between 180 and 720 order by 1
+
+		   //----------------------IN----------------------//
         
 in(list) (igual a uma lista) -> coluna1 in(valor1,...., valorN)
 exemplo: 
-usando operador tradicional:
+
+--usando operador tradicional:
             select nome_clie, uf from cliente
             where uf = 'SP' or uf = 'RJ' or uf = 'MG' order by uf;
-usando operador bd:
+
+--usando operador bd:
             select nome_clie, uf from cliente
             where uf in('SP','RJ','MG') order by uf;
-usando o operador not: not in(list)
+
+--usando o operador not: not in(list)
         select nome_clie, uf from cliente
             where uf not in('SP','RJ','MG') order by uf;
+
+           //---------------------LIKE---------------------//
             
 like - igual a posição ou igual a posições - > coluna like 'opção'
 % = qualquer quantidade, qualquer posição
