@@ -1,6 +1,8 @@
-//----------------------------Aula 5 - 15/03/2023 - resolvendo os exercício----------------------------//
+<<--------------------Aula 5 - (15/03/2023)-------------------->>
 
-Ckp 01 - 29/03/2023
+Resolvendo os Exercícios
+
+CHECKPOINT 01 - 29/03/2023
 
 create table cidade 
 (codigo number(4) constraint pk_cd_cid primary key,
@@ -47,10 +49,8 @@ commit;
 
 desc socio
 
-insert into socio values ('1111111111', 'Joana', '12-nov-1999',
-'111111111111111', 1, '1111111111', 'F', 10);
-insert into socio values ('2111111111', 'Marcos', '16-feb-02',
-'211111111111111', 2, '2111111111', 'F', 20);
+insert into socio values ('1111111111', 'Joana', '12-nov-1999','111111111111111', 1, '1111111111', 'F', 10);
+insert into socio values ('2111111111', 'Marcos', '16-feb-02','211111111111111', 2, '2111111111', 'F', 20);
 commit;
 
 desc dependente

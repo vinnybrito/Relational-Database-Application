@@ -1,6 +1,3 @@
---Vinicius Rodrigues Brito RM: 97473
---Gustavo Santos Nascimento RM: 96687
-
 
 --1)
 create table Cds

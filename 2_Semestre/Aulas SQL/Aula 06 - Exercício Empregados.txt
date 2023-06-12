@@ -1,4 +1,4 @@
-//------------------------Aula 06 - Gabarito Empregados------------------------//
+//--------------------Aula 06 - Gabarito Empregados--------------------//
 
 drop table empregado cascade constraints;
 create table Empregado 
@@ -29,6 +29,8 @@ drop table gerente cascade constraints;
 create table Gerente 
 (Nome_Empregado Varchar(50) not null references empregado,
 Nome_Gerente Varchar(50) not null references empregado);
+
+------------------------------------
 
 Gabarito - Locadora
 
@@ -78,7 +80,7 @@ create table estrela
 (cod_ator references ator,
 cod_filme references filme);
 
-Dados:
+-- Dados:
 
 insert into categoria values (1,'Comédia');
 insert into categoria values (2,'Drama');
@@ -114,27 +116,27 @@ Altere o número da categoria Comédia de 01 para 08 na tabela CATEGORIA.
 Esta alteração não pode ser realizada diretamente na PK, pois existem dados
 na FK que são os mesmos da PK.
 
---Passo 1: realizar a troca dos dados da fk para null
+-- Passo 1: realizar a troca dos dados da fk para null
 
 desc filme
 select * from filme
 update filme set codcat = null where codcat = 1;
 
---Passo 2: trocar o valor da PK de 1 para 8
+-- Passo 2: trocar o valor da PK de 1 para 8
 
 desc categoria
 select * from categoria
 update categoria set codcateg = 8 where codcateg = 1;
 
---Passo 3: atualiza as fks nulas para 8
+-- Passo 3: atualiza as fks nulas para 8
 update filme set codcat = 8 where codcat is null;
 commit;
 
---Insira a coluna SINOPSE na tabela FILME com 300 caracteres.
+-- Insira a coluna SINOPSE na tabela FILME com 300 caracteres.
 alter table filme add sinopse varchar(300);
 
---Cadastre uma nova categoria de filme chamada FICÇÃO.
+-- Cadastre uma nova categoria de filme chamada FICÇÃO.
 insert into categoria values (5, 'Ficção');
 
-Apague o filme chamado “Anjos Malditos” e “A melodia da vida” 
-da tabela FILME. Para isso, utilize um único comando. 
+-- Apague o filme chamado “Anjos Malditos” e “A melodia da vida” 
+-- da tabela FILME. Para isso, utilize um único comando.

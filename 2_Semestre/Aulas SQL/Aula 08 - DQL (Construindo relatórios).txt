@@ -1,4 +1,4 @@
-//------------------------Aula 8 - 12/04/2023------------------------//
+//--------------------Aula 8 - 12/04/2023--------------------//
 
 Construindo relatórios, comandos - DQL
 Data Query Language
@@ -11,7 +11,9 @@ Select = seleção
 from = origem dos dados
 nome_tabela = tabela destino do relatório
 
-Exemplos:
+-- EXEMPLOS:
+
+------------------------------------
 
 1) exibir o conteúdo da tabela cliente
 select * from cliente;
@@ -21,6 +23,8 @@ select * from vendedor;
 
 1.2) mostre o conteúdo da tabela que possui os produtos e seus pedidos.
 select * from item_pedido;
+
+------------------------------------
 
 2) criando um relatório com colunas específicas
 Sintaxe: Select nome_col1, nome_col2 from nome_tabela
@@ -35,9 +39,11 @@ select nome_ven, salario_fixo from vendedor;
 2.2) mostre o nome do produto e seu preço
 select descricao, val_unit from produto;
 
+------------------------------------
+
 3) classificando relatórios
---Sitaxe: select * from tabela order by nome_col asc (default)- crescente
---Sitaxe: select * from tabela order by nome_col desc - decrescente
+-- Sitaxe: select * from tabela order by nome_col asc (default) - crescente
+-- Sitaxe: select * from tabela order by nome_col desc - decrescente
 
 select nome_clie, uf from cliente order by nome_clie asc (opcional)
 select nome_clie, uf from cliente order by 1 asc (opcional)
@@ -51,9 +57,13 @@ select * from pedido order by 1, 3 desc, 4 desc
 3.2) mostrar em ordem decrescente de salário os dados dos vendedores
 select * from vendedor order by 3 desc
 
+------------------------------------
+
 4) apelidando colunas
 Sintaxe: select nome_col Apelido, nome_col "apelido da coluna" from tabela
 select nome_clie Cliente, endereco "Local da morada" from cliente
+
+------------------------------------
 
 5) usando filtro de linhas
 Sintaxe: select * from tabela where nome_col operador valor
@@ -74,5 +84,4 @@ select descricao, val_unit from produto where val_unit < 1.5 order by 2
 5.4) Quais pedidos foram feitos pelos clientes de código maior que 500? Mostre o
      código do cliente e o número do pedido classifcado pelo código do cliente
      de forma crescente
-
 select num_pedido, cod_clie from pedido where cod_clie > 500 order by 2

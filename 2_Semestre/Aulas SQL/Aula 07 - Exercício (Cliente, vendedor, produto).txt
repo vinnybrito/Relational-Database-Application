@@ -1,4 +1,4 @@
-//-----------------------Aula 7 - Nosso Sistema-----------------------//
+//--------------------Aula 7 - Exercício (Cliente, vendedor, Produto)--------------------//
 
 drop table cliente cascade constraints;
 drop table vendedor cascade constraints;
