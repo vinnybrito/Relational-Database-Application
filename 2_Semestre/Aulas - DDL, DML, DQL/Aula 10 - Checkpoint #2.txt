@@ -1,0 +1,69 @@
+  <<--------------------Aula 10 - (26/04/2023)-------------------->>
+
+  CHECKPOINT #2
+
+  -- Ex01) Criar as tabelas.
+
+  CREATE TABLE Cds
+  (Codigo NUMBER(3) CONSTRAINT cod_pk PRIMARY KEY,
+  Nome VARCHAR(50),
+  DataCompra DATE,
+  ValorPago NUMBER(10,2),
+  LocalCompra VARCHAR(20),
+  Album CHAR(1));
+
+  CREATE TABLE Musicas
+  (CodigoCD NUMBER(3) CONSTRAINT cd_cod_fk REFERENCES Cds,
+  Numero number(2),
+  Nome VARCHAR(50),
+  Artista VARCHAR(50),
+  Tempo NUMBER(4));
+
+  -- Ex02) Inserir para a tabela Cds 4 e para a tabela música 2 músicas por CD.
+
+  INSERT INTO Cds VALUES(01,'Metalica','25-aug-21',90.90,'São Paulo','1');
+  INSERT INTO Cds VALUES(02,'Charlie Brown Jr','15-dec-22',190.50,'Santos','5');
+  INSERT INTO Cds VALUES(03,'Iron Maiden','17-may-16',299.90,'Los Angeles','9');
+  INSERT INTO Cds VALUES(04,'AC/DC','07-feb-11',60.10,'Los Angeles','3');
+
+  select * from cds
+
+  INSERT INTO Musicas VALUES(01,1,'Nothing Else Matters','James Hetfield',6);
+  INSERT INTO Musicas VALUES(01,2,'Enter Sandman','James Hetfield',5);
+  INSERT INTO Musicas VALUES(02,1,'Céu Azul','Chorão',3);
+  INSERT INTO Musicas VALUES(02,2,'Só os loucos sabem','Chorão',4);
+  INSERT INTO Musicas VALUES(03,1,'Fear of the Dark','Bruce Dickinson',7);
+  INSERT INTO Musicas VALUES(03,2,'Blood Brothers','Bruce Dickinson',7);
+  INSERT INTO Musicas VALUES(04,1,'Highway to Hell','Brian Johnson',3);
+  INSERT INTO Musicas VALUES(04,2,'Back in Black','Brian Johnson',4);
+
+  ------------------
+
+  INSERT INTO Cds VALUES(1,'Mercury','10-Jan-00',35.00,'Submarino','V');
+  INSERT INTO Cds VALUES(2,'Meteora','25-Jan-04',70.00,'Americanas','F');
+  INSERT INTO Cds VALUES(3,'Iowa','28-Nov-01',10.00,'Shoope','V');
+  INSERT INTO Cds VALUES(4,'Ambitions','30-Nov-16',35.00,'Casas Bahia','F');
+
+  insert into musicas values(1,1,'Enemy','Imagine Dragons',2);
+  insert into musicas values(2,1,'Bones','Imagine Dragons',3);
+
+  insert into musicas values(3,2,'Numb','Linkin Park',1);
+  insert into musicas values(4,2,'Faint','Linkin Park',5);
+
+  insert into musicas values(5,3,'Gently','Slipknot',3);
+  insert into musicas values(6,3,'515','Slipknot',5);
+
+  insert into musicas values(7,4,'Bon Voyage','José Pedro',6);
+  insert into musicas values(8,4,'Listen','José Pedro',2);
+
+
+  -- Ex03) Mostrar os campos nome e data da compra dos cds ordenados por nome.
+
+  -- Ex04) Mostrar todas as músicas (todos os campos) do cd de código 1 com tempo entre 2 e 3 minutos (inclusive)
+
+  -- Ex05) Mostre o número, nome e tempo das músicas do cd 5 em ordem de número.
+
+  -- Ex06) Mostre o nome das músicas do artista José Pedro.
+
+  -- Ex07) Mostre o nome de todos cds comprados no Submarino.
+

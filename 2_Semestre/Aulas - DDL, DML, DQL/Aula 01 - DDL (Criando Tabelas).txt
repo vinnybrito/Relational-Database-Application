@@ -36,7 +36,7 @@
   nm_cargo varchar2(25),
   salario number(8,2));
 
-  -- visualizando a estrutura de uma tabela
+  -- Visualizando a estrutura de uma tabela
   desc nome_tabela
   exemplo: desc cargo10
 
@@ -72,13 +72,13 @@
 
   desc cargo10
 
-  -- visualizando constraints
+  -- Visualizando constraints
   select constraint_name, constraint_type from user_constraints
   where table_name = 'CARGO10'
 
   ------------------------------------
 
-  criando o relacionamento
+  Criando o Relacionamento
 
   1 - 1 - Pk + FK_Uk
   1 - N - Pk + FK

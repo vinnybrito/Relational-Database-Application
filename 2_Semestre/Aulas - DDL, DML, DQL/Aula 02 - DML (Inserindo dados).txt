@@ -23,7 +23,7 @@
   (fk_nota number(5) constraint tem_nf_fk references n_fiscal,
   fk_prod number(5) constraint tem_prod_fk references produto)
 
-  ------------------------------------
+  <----------------DML------------------->
 
   Inserindo dados
   Comando DML - Data Manipulation Language

@@ -1,0 +1,83 @@
+
+-- 1) Criar  todas  as  tabelas,  de  acordo  com o  modelo relacional/lógico,  definindo  todas
+-- as restrições de chaves e demais restrições mencionadas no modelo.
+
+CREATE TABLE Categoria
+(Codcateg number(4) primary key,
+Descricao varchar(50) not null);
+
+CREATE TABLE Filme
+(CodFilme number(4) primary key,
+Titulo varchar(70) not null,
+CodCat references categoria);
+
+CREATE TABLE DVD
+(NumDVD number(4) primary key,
+CodFilme references Filme,
+Tipo char(1));
+
+CREATE TABLE Cliente
+(CodCli number(4) primary key,
+Prenome varchar(50) not null,
+Sobrenome varchar(50),
+Endereco varchar(70),
+Telefone varchar(20));
+
+CREATE TABLE Aluga
+(CodCli references Cliente,
+NumDvd references DVD,
+DataRet date,
+DataDev date,
+cd_aluga number(4) primary key);    -- Por quê?
+
+CREATE TABLE Ator
+(CodAtor number(4) primary key,
+Nome_popular varchar(50) not null,
+Nome_artistico varchar(50),
+Datanasc date);
+
+CREATE TABLE Estrela
+(CodAtor references Ator,
+CodFilme references Filme);
+
+-- 2) Insira todas os valores apresentados nas tabelas FILME, CLIENTE, DVD e CATEGORIA.
+-- (Utilize vários insert’s).
+
+INSERT INTO Categoria VALUES (1, 'Comédia');
+INSERT INTO Categoria VALUES (2, 'Drama');
+INSERT INTO Categoria VALUES (3, 'Aventura');
+INSERT INTO Categoria VALUES (4, 'Terror');
+COMMIT;
+
+INSERT INTO Filme VALUES (1, 'Sai pra lá', 1);
+INSERT INTO Filme VALUES (2, 'Ajuda Eterna', 2);
+INSERT INTO Filme VALUES (3, 'Anjos Malditos', 2);
+INSERT INTO Filme VALUES (4, 'Pânico II', 4);
+INSERT INTO Filme VALUES (5, 'Um dia de furia', 3);
+INSERT INTO Filme VALUES (6, 'Lente Cega', 3);
+INSERT INTO Filme VALUES (7, 'Sinais do Tempo', 2);
+INSERT INTO Filme VALUES (8, 'A melodia da vida', 1);
+COMMIT;
+
+INSERT INTO DVD VALUES (1, 1, 'S');
+INSERT INTO DVD VALUES (2, 1, 'S');
+INSERT INTO DVD VALUES (3, 1, 'S');
+INSERT INTO DVD VALUES (4, 2, 'D');
+INSERT INTO DVD VALUES (5, 3, 'S');
+COMMIT;
+
+INSERT INTO Cliente VALUES (1,'João','Silva','Rua da Cruz sem Pé','4444-1111');
+INSERT INTO Cliente VALUES (2,'Antônio','Ferreira','Av. da Vila Velha','6660-9333');
+INSERT INTO Cliente VALUES (3,'Fabio','Dias','Rua Antonio Vieira','2337-0393');
+INSERT INTO Cliente VALUES (4,'Andreia','Melo','Rua da Praia Bonita','8989-7777');
+INSERT INTO Cliente VALUES (5,'Murilo','Fontes','Av. dos Autonomistas','9090-9090');
+COMMIT;
+
+-- 3) Altere o número da categoria Comédia de 01 para 08 na tabela CATEGORIA. 
+
+-- 4) Insira a coluna SINOPSE na tabela FILME com 300 caracteres.
+
+-- 5) Cadastre uma nova categoria de filmechamada FICÇÃO.
+
+--6) Apague o filme chamado “Anjos Malditos” e “A melodia da vida” da tabela FILME.  
+-- Para isso, utilize um único comando. 

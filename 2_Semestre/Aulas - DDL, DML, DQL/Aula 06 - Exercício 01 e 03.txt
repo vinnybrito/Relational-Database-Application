@@ -1,0 +1,152 @@
+  <<-------------Aula 06 - (22/03/2023)------------>>
+
+  Gabarito dos Exercícios 01 & 03
+
+  <--------------Exercício 03-------------->
+
+  Exercício_03 - Empregado, Companhia, Trabalha, Gerente
+
+  Estrutura
+
+  drop table empregado cascade constraints;
+  create table Empregado 
+  (Nome_Empregado Varchar(50)not null,
+  Rua Varchar(100) not null, 
+  Cidade Varchar(30),
+  Estado_Civil Varchar(15));
+
+  alter table empregado add salario number(11,2);
+  alter table empregado add data_nascimento date;
+  alter table empregado modify cidade varchar(110);
+
+  drop table companhia cascade constraints;
+  create table Companhia 
+  (Nome_Companhia Varchar(50) primary key,
+  Cidade Varchar(30));
+
+  alter table empregado add primary key (nome_empregado);
+
+  drop table trabalha cascade constraints;
+  create table Trabalha 
+  (Nome_Empregado Varchar(50) primary key 
+  references empregado,
+  Nome_Companhia Varchar(50) not null references companhia,
+  Salário Number(9,2) not null);
+
+  drop table gerente cascade constraints;
+  create table Gerente 
+  (Nome_Empregado Varchar(50) not null references empregado,
+  Nome_Gerente Varchar(50) not null references empregado);
+
+  <--------------Exercício 01-------------->
+
+  Exercício_01 - Locadora de vídeo
+
+  Estrutura
+
+  drop table categoria cascade constraints;
+  create table CATEGORIA 
+  (Codcateg number(4) primary key,
+  Descricao varchar(50) not null);
+
+  drop table filme cascade constraints;
+  create table Filme 
+  (CodFilme number(4) primary key,
+  Titulo varchar(70) not null,
+  codcat references categoria);
+
+  drop table dvd cascade constraints;
+  create table DVD 
+  (NumDVD number(4) primary key,
+  codfilme references filme,
+  Tipo char(1));
+
+  drop table cliente cascade constraints;
+  create table Cliente 
+  (CodCli number(4)primary key,
+  Prenome varchar(50) not null,
+  Sobrenome varchar(50), 
+  Endereco varchar(70), 
+  Telefone varchar(20));
+
+  drop table aluga cascade constraints;
+  create table aluga 
+  (cd_clie references cliente,
+  cd_dvd references dvd,
+  data_ret date, data_dev date,
+  num_aluga number(4) primary key);
+
+  drop table ator cascade constraints;
+  create table Ator 
+  (Codator number(4) primary key,
+  Nome_popular varchar(50) not null,
+  Nome_artistico varchar(50),
+  Datanasc date);
+
+  drop table estrela cascade constraints;
+  create table estrela 
+  (cod_ator references ator,
+  cod_filme references filme);
+
+  -- Inserindo Dados --
+
+  insert into categoria values (1,'Comédia');
+  insert into categoria values (2,'Drama');
+  insert into categoria values (3,'Aventura');
+  insert into categoria values (4,'Terror');
+  commit;
+
+  insert into filme values (1,'Sai pra lá',1);
+  insert into filme values (2,'Ajuda Eterna',2);
+  insert into filme values (3,'Anjos Malditos',2);
+  insert into filme values (4,'Pânico II',4);
+  insert into filme values (5,'Um dia de furia',3);
+  insert into filme values (6,'Lente Cega',3);
+  insert into filme values (7,'Sinais do Tempo',2);
+  insert into filme values (8,'A melodia da vida',1);
+  commit;
+
+  insert into dvd values (1,1,'S');
+  insert into dvd values (2,1,'S');
+  insert into dvd values (3,1,'S');
+  insert into dvd values (4,2,'D');
+  insert into dvd values (5,3,'S');
+  commit;
+
+  insert into cliente values (1,'João','Silva','Rua da Cruz sem Pé','4444-1111');
+  insert into cliente values (2,'Antônio','Ferreira','Av. da Vila Velha','6660-9333');
+  insert into cliente values (3,'Fabio','Dias','Rua Antonio Vieira','2337-0393');
+  insert into cliente values (4,'Andreia','Melo','Rua da Praia Bonita','8989-7777');
+  insert into cliente values (5,'Murilo','Fontes','Av. dos Autonomistas','9090-9090');
+  commit;
+
+  Altere o número da categoria Comédia de 01 para 08 na tabela CATEGORIA.
+  Esta alteração não pode ser realizada diretamente na PK, pois existem dados
+  na FK que são os mesmos da PK.
+
+  -- Passo 1: realizar a troca dos dados da fk para null
+
+  desc filme
+  select * from filme
+  update filme set codcat = null where codcat = 1;
+
+  -- Passo 2: Trocar o valor da PK de 1 para 8
+
+  desc categoria
+  select * from categoria
+  update categoria set codcateg = 8 where codcateg = 1;
+
+  -- Passo 3: Atualiza as fks nulas para 8
+  update filme set codcat = 8 where codcat is null;
+  commit;
+
+  -- Insira a coluna SINOPSE na tabela FILME com 300 caracteres.
+  alter table filme add sinopse varchar(300);
+
+  -- Cadastre uma nova categoria de filme chamada FICÇÃO.
+  insert into categoria values (5, 'Ficção');
+
+  -- Apague o filme chamado “Anjos Malditos” e “A melodia da vida” 
+  -- da tabela FILME. Para isso, utilize um único comando.
+
+

@@ -1,0 +1,136 @@
+  <<--------------------Aula 13 - (17/05/2023)-------------------->>
+
+  CHECKPOINT #3
+
+  drop table automovel  cascade constraints
+  drop table revendedora cascade constraints
+  drop table consumidor cascade constraints
+  drop table negocio cascade constraints
+  drop table garagem cascade constraints
+
+  CREATE TABLE Automovel 
+  (Codigo number(4) PRIMARY KEY,
+  Fabricante varchar2(20),
+  Modelo varchar2(10),
+  Ano number(4),
+  Pais varchar2(15),
+  Preco_tabela number(8,2));
+
+  CREATE TABLE Revendedora 
+  (Cnpj varchar2(14) PRIMARY KEY,
+  Nome varchar2(20),
+  Proprietario varchar2(20),
+  Cidade varchar2(15),
+  uf char(2));
+
+  CREATE TABLE Consumidor 
+  (Identidade number(4) PRIMARY KEY,
+  Nome varchar2(20),
+  Sobrenome varchar2(10));
+
+  CREATE TABLE Negocio 
+  (AnoAuto number(4),
+  Data date,
+  Preco number(8,2),
+  Comprador number(4),
+  Revenda varchar2(14),
+  CodAuto number(4),
+  FOREIGN KEY(Comprador) REFERENCES Consumidor (Identidade),
+  FOREIGN KEY(Revenda) REFERENCES Revendedora (cnpj),
+  FOREIGN KEY(CodAuto) REFERENCES Automovel (Codigo));
+
+  CREATE TABLE Garagem 
+  (AnoAuto number(4),
+  Quantidade number(4),
+  cnpjRevenda varchar2(14),
+  CodAuto number(4),
+  FOREIGN KEY(cnpjRevenda) REFERENCES Revendedora (cnpj),
+  FOREIGN KEY(CodAuto) REFERENCES Automovel (Codigo));
+
+  delete from automovel
+  delete from revendedora
+  delete from consumidor
+  delete from negocio
+  delete from garagem
+
+  insert into automovel values (10,'Honda','Civic',2008,'Japao','45000')
+  insert into automovel values (20,'Honda','Fit',2005,'Japao','25500')
+  insert into automovel values (30,'Pegeout','306',2006,'Franca','35780')
+  insert into automovel values (40,'Citroen','Xantia',2000,'Franca','8500')
+  insert into automovel values (50,'Volkswagem','Fusca',2011,'Alemanha','35000')
+  insert into automovel values (60,'Volkswagem','Voyage',2010,'Alemanha',27899)
+
+  insert into revendedora values ('1111111','Automodelo','Ronaldo','São Paulo','SP')
+  insert into revendedora values ('2222222','Best Cars','Francisco','Rio de Janeiro','RJ')
+  insert into revendedora values ('3333333','Roma Veículos','Joana','Bahia','BA')
+  insert into revendedora values ('4444444','Já Era Autos','Marcel','São Paulo','SP')
+
+  insert into consumidor values (1,'Carlos','Andrade')
+  insert into consumidor values (2,'Simone','Freitas')
+  insert into consumidor values (3,'Gilmar','Silva')
+  insert into consumidor values (4,'Rosana','Gonçalves')
+
+  insert into negocio values (2005,'03/05/2010',26700,1,'1111111',20)
+  insert into negocio values (2010,'01/01/2011',35000,2,'3333333',60)
+  insert into negocio values (2000,'13/07/2010',7000,1,'2222222',40)
+  insert into negocio values (2006,'22/12/2010',30000,3,'4444444',30)
+  insert into negocio values (2011,'10/06/2011',35500,4,'2222222',50)
+  insert into negocio values (2005,'04/09/2009',26000,3,'2222222',20)
+
+  insert into garagem values (2005,3,1111111,20)
+  insert into garagem values (2000,1,2222222,40)
+  insert into garagem values (2011,7,2222222,50)
+  insert into garagem values (2005,6,2222222,20)
+  insert into garagem values (2010,1,3333333,60)
+  insert into garagem values (2006,4,4444444,30)
+
+  commit
+
+  -- Questões
+
+  -- 1) Mostre quantos fabricantes diferentes estão cadastrados.
+  select count(distinct fabricante) "Fabricantes_Cadastrados" from automovel;
+
+  -- 2) Mostre quais revendedoras vendem o modelo Xantia.
+  select nome "REVENDEDORA" from revendedora
+  inner join negocio on revendedora.cnpj = negocio.revenda
+  inner join Automovel on negocio.CodAuto = automovel.Codigo
+  where automovel.modelo = 'Xantia';
+
+  -- 3) Mostre o nome e a cidade do revendedor que não possuí veículo francês.
+  select Nome "Nome", cidade "CIDADE" from revendedora
+  left join negocio on revendedora.cnpj = negocio.revenda
+  left join automovel on negocio.CodAuto = automovel.codigo
+  where automovel.pais <> 'Franca' or automovel.pais is null;
+
+  -- 4) Mostre o maior e o menor preço de tabela dos veículos.
+  select max(preco_tabela) "Maior_preço", min(preco_tabela) "Menor_preço"
+  from automovel;
+
+  -- 5) Mostre o nome, modelo dos veículos, preço da tabela, preço da tabela com aumento de 10%
+  select Fabricante, Modelo, Preco_tabela, (Preco_tabela * 1.1) "TABELA_COM_AUMENTO"
+  from Automovel;
+
+  -- 6) Exiba a quantidade de carros comprados por Consumidor.
+  select nome, count(Negocio.CodAuto) "CARROS_COMPRADOS" from consumidor
+  left join negocio on consumidor.identidade = negocio.comprador
+  group by nome;
+
+  -- 7) Listar os automóveis italianos e japoneses ordenados por código (crescente), ano e preço de tabela.
+  select * from automovel
+  where pais in ('Italia', 'Japao')
+  order by Codigo asc, Ano asc, Preco_tabela asc;
+
+  -- 8) Qual o carro de preço de tabela é o mais caro?
+  select modelo, preco_tabela from automovel
+  where preco_tabela = (select max(preco_tabela) from automovel);
+
+  -- 9) Qual seria o lucro da revendedora Automodelo caso tivesse vendido seus carros por um valor 10% 
+  -- maior, supondo os preços de tabela estáveis?
+  select sum((n.Preco * 0.1)) "LUCRO_REVENDEDORA" from Negocio n
+  inner join Revendedora r on n.Revenda = r.Cnpj
+  where r.Nome = 'Automodelo';
+
+  -- 10) Mostar os dados dos consumidores.
+  select * from consumidor
+

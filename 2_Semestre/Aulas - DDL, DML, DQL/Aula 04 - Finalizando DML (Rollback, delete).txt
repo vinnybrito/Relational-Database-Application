@@ -1,6 +1,6 @@
   <<--------------------Aula 4 - (08/03/23)-------------------->>
 
-  Finalizando DML
+  FINALIZANDO DML
 
   -- Eliminando todas as linha(s)
   delete from nome_tabela

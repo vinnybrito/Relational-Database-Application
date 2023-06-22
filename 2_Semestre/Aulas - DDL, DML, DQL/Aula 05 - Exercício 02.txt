@@ -1,0 +1,75 @@
+  <<--------------------Aula 5 - (15/03/2023)-------------------->>
+
+  Resolvendo Exercícios
+
+  DATA: CHECKPOINT 01 - 29/03/2023
+
+  <-----------------Exercício 02--------------------->
+
+  Ex02-)
+  O código abaixo é referente ao EXERCÍCIO 02 onde são 
+  criadas as tabelas: Cidade, Socio, Setor, Dependente;
+
+
+  |-------Criando Tabelas-------|
+	         &
+  |-----Alterando Estruturas----|
+
+  create table cidade 
+  (codigo number(4) constraint pk_cd_cid primary key,
+  nome varchar(30) constraint nn_nome_cid not null);
+
+  create table socio 
+  (cpf char(11) constraint pk_cpf_soc primary key,
+  nome varchar(20) constraint nn_nome_soc not null,
+  datanasc date constraint nn_dt_soc not null,
+  rg varchar(15) constraint nn_rg_soc not null,
+  cidade number(4) constraint nn_cid_soc not null
+  constraint fk_cid_soc references cidade)
+
+  alter table cidade add uf  char(2) constraint nn_uf_cid not null
+
+  alter table socio add (fone varchar(10),
+  sexo char(1) constraint nn_sx_soc not null)
+
+  alter table socio modify nome varchar(35)
+
+  create table setor 
+  (codigo number(3) primary key,
+  nome varchar(30) not null);
+
+  alter table socio add setor number(3) not null references setor
+
+  create table dependente 
+  (socio char(11) not null references socio,
+  numero number(4) primary key,
+  nome varchar(30) not null,
+  datanasc date not null);
+
+  desc cidade - exibir a estrutura da tabela
+
+  <----------------INSERINDO DADOS------------------->
+
+  insert into cidade values(1,'São Paulo', 'SP');
+  insert into cidade values(2,'Parati', 'RJ');
+  commit;
+  desc setor
+
+  insert into setor values (10,'Administrativo');
+  insert into setor values (20,'Contabil');
+  commit;
+  desc socio
+
+  insert into socio values ('1111111111', 'Joana', '12-nov-1999','111111111111111', 1, '1111111111', 'F', 10);
+  insert into socio values ('2111111111', 'Marcos', '16-feb-02','211111111111111', 2, '2111111111', 'F', 20);
+  commit;
+  desc dependente
+
+  insert into dependente values ('1111111111', 100, 'Guilherme', '11-nov-11');
+  insert into dependente values ('2111111111', 101, 'Rosana', '04-feb-1995');
+  commit;
+
+  select * from cidade
+  select * from socio
+  select * from setor
+  select * from dependente
