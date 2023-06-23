@@ -67,7 +67,7 @@
   -- Renomeando uma constraint
   alter table tb_teste rename constraint sys_c003509437 to fiap
 
-  <----------------Criação das tabelas TESTE------------------>
+  <----------------CASCADE CONSTRAINTS------------------>
 
   create table tb_teste1
   (codigo number(1) primary key)
