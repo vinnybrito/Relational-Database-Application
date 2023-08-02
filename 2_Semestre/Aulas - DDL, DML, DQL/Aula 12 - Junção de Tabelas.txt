@@ -11,10 +11,11 @@
   select * from vendedor;
 
   -- Criar as colunas dt_adm e dt_dem na tabela vendedor e incluir a data de hoje nelas
-  alter table vendedor add dt_adm date default sysdate;
-  alter table vendedor add dt_dem date default sysdate;
-
   -- default sysdate , significa inserir a data do sistema na criação da coluna
+  
+  alter table vendedor add dt_adm date default sysdate;
+  
+  ----------------------------------
 
   select * from vendedor;
 
@@ -26,25 +27,31 @@
   Select sysdate, sysdate + 400, sysdate - 400 from dual;
 
   -- Subtrair 3580 dias da data de admissão dos vendedores de comissão A
-  update vendedor set dt_adm = dt_adm - 3580 where comissao = 'A';
+  update vendedor set dt_adm = dt_adm - 3580 
+  where comissao = 'A';
+
   select * from vendedor order by comissao;
 
   -- Subtrair 6580 dias da data de admissão dos vendedores de comissão B
-  update vendedor set dt_adm = dt_adm - 6580 where comissao = 'B';
+  update vendedor set dt_adm = dt_adm - 6580 
+  where comissao = 'B';
 
   -- Subtrair 13580 dias da data de admissão dos vendedores de comissão C
-  update vendedor set dt_adm = dt_adm - 13580 where comissao = 'C';
+  update vendedor set dt_adm = dt_adm - 13580 
+  where comissao = 'C';
   commit;
 
   -- Subtrair 18 dias da data de demissão do vendedor Felipe 
-  update vendedor set dt_dem = dt_dem - 18 where nome_ven in 'Felipe';
+  update vendedor set dt_dem = dt_dem - 18 
+  where nome_ven in 'Felipe';
 
   -- Apagar o conteúdo da coluna data de demisão dos vendedores de código: 101 a 310
   (inclusive)
-  update vendedor set dt_dem = null where cod_ven between 101 and 310;
+  update vendedor set dt_adm = null where cod_ven between 101 and 310;
 
   -- Subtrair 67 dias da data de demissão do vendedor Joao de código 11.
-  update vendedor set dt_dem = dt_dem - 67 where nome_ven = 'Joao' and cod_ven = 11;
+  update vendedor set dt_dem = dt_dem - 67 
+  where nome_ven = 'Joao' and cod_ven = 11;
   commit;
 
   Crie um relatório que exiba o tempo de cada funcionário na empresa, mostre seu nome e tempo.
@@ -77,17 +84,20 @@
   -- Exiba os cargos com seus funcionários e caso exista um funcionário que não tenha conexão
   -- com algum cargo, mostre ele tb.
 
-  select nm_fun, nm_cargo from cargo right join funcionario on cd_cargo = cargo_fk;
+  select nm_fun, nm_cargo from cargo 
+  right join funcionario on cd_cargo = cargo_fk;
 
    ------------------------------------
 
   -- Criar um relatório que mostre a diferença entre as tabelas
   -- left ou right + pesquisa sobre conteúdo null na fk
 
-  select nm_fun, nm_cargo from cargo right join funcionario on cd_cargo = cargo_fk
+  select nm_fun, nm_cargo from cargo 
+  right join funcionario on cd_cargo = cargo_fk
   where cargo_fk is null;
 
-  select nm_fun, nm_cargo from cargo left join funcionario on cd_cargo = cargo_fk
+  select nm_fun, nm_cargo from cargo 
+  left join funcionario on cd_cargo = cargo_fk
   where cargo_fk is null;
 
   -- ou tudo em um único relatório

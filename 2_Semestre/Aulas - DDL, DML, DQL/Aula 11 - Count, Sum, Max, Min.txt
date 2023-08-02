@@ -13,7 +13,7 @@
 
   <-----------------COUNT----------------->
 
-  contador de linhas
+  Contador de linhas
   Count(coluna) ou count(*)
 
   -- Quantos clientes existem por estado?
@@ -49,7 +49,7 @@
 
   <-----------------MAX----------------->
 
-  maior valor na coluna
+  Maior valor na coluna
   max(coluna)
 
   -- Qual o maior salário cadastrado na tabela vendedor?

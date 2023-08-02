@@ -28,8 +28,7 @@
 
   drop table trabalha cascade constraints;
   create table Trabalha 
-  (Nome_Empregado Varchar(50) primary key 
-  references empregado,
+  (Nome_Empregado Varchar(50) primary key references empregado,
   Nome_Companhia Varchar(50) not null references companhia,
   Salário Number(9,2) not null);
 

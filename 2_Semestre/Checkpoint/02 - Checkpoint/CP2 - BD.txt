@@ -1,3 +1,61 @@
+-- 1. Criar as tabelas.
+
+DROP TABLE Cds CASCADE CONSTRAINTS;
+CREATE TABLE Cds
+(codigo NUMBER(3) PRIMARY KEY,
+nome VARCHAR(50),
+DataCompra DATE,
+ValorPago NUMBER(8,2),
+LocalCompra VARCHAR(20),
+Album CHAR(1));
+
+DROP TABLE Musicas CASCADE CONSTRAINTS;
+CREATE TABLE Musicas
+(CodigoCD NUMBER(3) REFERENCES Cds,
+Numero NUMBER(2),
+Nome VARCHAR(50),
+Artista VARCHAR(50),
+Tempo NUMBER(4));
+
+DESC cds;
+DESC musicas;
+
+-- 2. Inserir para a tabela Cds 4 e para a tabela música 2 músicas por CD.
+
+INSERT INTO Cds VALUES (1, 'Born to Die', '24-Jun-13', 68.50, 'Submarino', 'P');
+INSERT INTO Cds VALUES (2, 'AM', '15-Dez-2014', 119.90, 'Ponto Frio', 'M');
+INSERT INTO Cds VALUES (3, 'Planet Her', '05-Fev-22', 250.00, 'Extra', 'P');
+INSERT INTO Cds VALUES (4, 'Future Nostalgia', '20-Set-20', 54.99, 'Submarino', 'M');
+
+INSERT INTO musicas VALUES (1, 01, 'Blue Jeans', 'Lana Del Rey', 2);
+INSERT INTO musicas VALUES (1, 02, 'Video Games', 'José Pedro', 5);
+
+INSERT INTO musicas VALUES (2, 01, 'Do I Wanna Know', 'José Pedro', 3);
+INSERT INTO musicas VALUES (2, 02, 'R U Mine', 'Arctic Monkes', 1);
+
+INSERT INTO musicas VALUES (3, 01, 'Women', 'Doja Cat', 4);
+INSERT INTO musicas VALUES (3, 02, 'Get Into it', 'José Pedro', 1);
+
+INSERT INTO musicas VALUES (4, 01, 'Levitating', 'José Pedro', 3);
+INSERT INTO musicas VALUES (4, 02, 'Break My Heart', 'Dua Lipa', 6);
+
+-- 3. Mostrar os campos nome e data da compra dos cds ordenados por nome.
+SELECT nome, dataCompra FROM cds ORDER BY nome;
+
+-- 4. Mostrar todas as músicas (todos os campos) do cd de código 1 com 
+-- tempo entre 2 e 3 minutos (inclusive)
+SELECT * FROM musicas WHERE codigoCD = 1  AND tempo = 2
+
+-- 5. Mostre o número, nome e tempo das músicas do cd 5 em ordem de número.
+ SELECT nome, tempo FROM musicas ORDER BY numero;
+
+-- 6. Mostre o nome das músicas do artista José Pedro.
+SELECT * FROM MUSICAS WHERE Artista = 'José Pedro';
+
+-- 7. Mostre o nome de todos cds comprados no Submarino.
+SELECT * FROM Cds WHERE localCompra = 'Submarino';
+
+
 
 --1)
 create table Cds

@@ -1,4 +1,5 @@
-  <<--------------------Aula 02 (15/02/2023)-------------------->>
+  <<---------------- Aula 02 (15/02/2023) ---------------->>
+
 
   -- Criação das tabelas: n_fiscal e produto
 
@@ -23,7 +24,7 @@
   (fk_nota number(5) constraint tem_nf_fk references n_fiscal,
   fk_prod number(5) constraint tem_prod_fk references produto)
 
-  <----------------DML------------------->
+  <----------------DML---------------->
 
   Inserindo dados
   Comando DML - Data Manipulation Language

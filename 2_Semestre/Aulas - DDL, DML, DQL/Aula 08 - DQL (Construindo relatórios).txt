@@ -51,7 +51,8 @@
   select uf, nome_clie from cliente order by 1,2
   select uf, nome_clie from cliente order by 1,2 desc
 
-  -- 3.1) Criar um relatório que mostre os pedidos organizados por número (crescente), cliente e vendedor decrescente
+  -- 3.1) Criar um relatório que mostre os pedidos organizados por número (crescente), 
+  -- cliente e vendedor decrescente
   select * from pedido order by 1, 3 desc, 4 desc
 
   -- 3.2) Mostrar em ordem decrescente de salário os dados dos vendedores
@@ -86,6 +87,3 @@
           código do cliente e o número do pedido classifcado pelo código do cliente
           de forma crescente
   select num_pedido, cod_clie from pedido where cod_clie > 500 order by 2
-
-
-

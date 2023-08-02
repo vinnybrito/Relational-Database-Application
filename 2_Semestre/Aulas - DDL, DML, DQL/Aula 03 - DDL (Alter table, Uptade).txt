@@ -100,17 +100,17 @@
   (cod_prod number(4) constraint prod_cod_pk primary key, 
   unidade varchar2(3),descricao varchar2(20),val_unit number(10,2))
 
-  insert into produto_tb values ('25','KG','Queijo','0.97');
-  insert into produto_tb values ('31','BAR','Chocolate','0.87');
-  insert into produto_tb values ('78','L','Vinho','2.00');
-  insert into produto_tb values ('22','M','Linho','0.11');
-  insert into produto_tb values ('30','SAC','Acucar','0.30');
-  insert into produto_tb values ('53','M','Linha','1.80');
-  insert into produto_tb values ('13','G','Ouro','6.18');
-  insert into produto_tb values ('45','M','Madeira','0.25');
-  insert into produto_tb values ('87','M','Cano','1.97');
-  insert into produto_tb values ('77','M','Papel','1.05');
-  commit;
+  INSERT INTO produto_tb VALUES (25,'KG','Queijo',0.97);
+  INSERT INTO produto_tb VALUES (31,'BAR','Chocolate',0.87);
+  INSERT INTO produto_tb VALUES (78,'L','Vinho',2.00);
+  INSERT INTO produto_tb VALUES (22,'M','Linho',0.11);
+  INSERT INTO produto_tb VALUES (30,'SAC','Acucar',0.30);
+  INSERT INTO produto_tb VALUES (53,'M','Linha',1.80);
+  INSERT INTO produto_tb VALUES (13,'G','Ouro',6.18);
+  INSERT INTO produto_tb VALUES (45,'M','Madeira',0.25);
+  INSERT INTO produto_tb VALUES (87,'M','Cano',1.97);
+  INSERT INTO produto_tb VALUES (77,'M','Papel',1.05);
+  COMMIT;
 
   select * from produto_tb
 
@@ -140,5 +140,3 @@
   select * from produto_tb
 
   desc produto_tb
-
-
