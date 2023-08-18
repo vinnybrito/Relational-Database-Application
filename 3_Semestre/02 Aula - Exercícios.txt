@@ -1,0 +1,71 @@
+Aula 02 - Tomada de decição (IF,ELSIF,ELSE) 
+(15/08/2023)
+
+--------------------------
+
+EXERCÍCIOS
+
+Criar um bloco PL/SQL para analisar a entrada de dados do 
+sexo de um cliente. O bloco deverá receber o dado sobre o
+sexo: para masculino - M ou m, para feminino -F ou f. 
+Qualquer dado fora desta configuração deverá ser exibido 
+'Outros', para M ou m 'Masculino', para F ou f 'Feminino'.
+
+SET SERVEROUTPUT ON
+DECLARE
+    v_sexo CHAR(1) := UPPER('&sexo'); 
+BEGIN
+    IF v_sexo = 'F' THEN
+        DBMS_OUTPUT.PUT_LINE('Feminino');
+    ELSIF v_sexo = 'M' THEN
+        DBMS_OUTPUT.PUT_LINE('Masculino');
+    ELSE 
+        DBMS_OUTPUT.PUT_LINE('Outro');
+    END IF;
+END;
+/
+
+------------Ex2-------------
+
+DECLARE
+    v_carro NUMBER(10,2) := 10000;
+    v_entrada v_carro%TYPE := v_carro * 0.20;
+    v_preco v_carro%TYPE := v_carro - v_entrada;
+        
+    v_resposta NUMBER(2) := &quantas_prestacoes;
+        
+    v_juros6 v_carro%TYPE := v_preco * 0.10;
+    v_juros12 v_carro%TYPE := v_preco * 0.15;
+    v_juros18 v_carro%TYPE := v_preco * 0.20;
+BEGIN   
+    IF v_resposta = 6 THEN
+    	DBMS_OUTPUT.PUT_LINE('Valor do juros em 6 parcelas: ' || v_juros6);
+    ELSIF v_resposta = 12 THEN
+    	DBMS_OUTPUT.PUT_LINE('Valor do juros em 12 parcelas: ' || v_juros12);
+    ELSIF v_resposta = 18 THEN
+    	DBMS_OUTPUT.PUT_LINE('Valor do juros em 18 parcelas: ' || v_juros18);
+    ELSE
+    	DBMS_OUTPUT.PUT_LINE('Não Encontrado');    
+    END IF;
+END;
+/
+
+------------Ex3-------------
+
+Criar um bloco PL/SQL para calcular a média da fiap.
+Entrada das notas via teclado.
+
+SET SERVEROUTPUT ON
+DECLARE
+    v_cp1 NUMBER(3,2) := &cp1;
+    v_cp2 v_cp1%TYPE := &cp2;
+    v_cp3 v_cp1%TYPE := &cp3;
+BEGIN
+    IF (v_cp1 < v_cp2 and v_cp3) or (v_cp2 < v_cp1 and v_cp3) or (v_cp3 < v_cp1 and v_cp2) THEN
+	
+    END IF;
+END;
+/
+
+
+

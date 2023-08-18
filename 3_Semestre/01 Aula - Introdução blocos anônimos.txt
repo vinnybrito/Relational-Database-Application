@@ -1,43 +1,43 @@
-  Aula 01 - Introdução blocos anônimos 
-  (08/07/2023)
+Aula 01 - Introdução blocos anônimos 
+(08/08/2023)
 
-  1º Comando a ser executado:
-  Habilitando a saída de dados de um bloco PL
+1º Comando a ser executado:
+Habilitando a saída de dados de um bloco PL
 
-  SET SERVEROUTPUT ON
+SET SERVEROUTPUT ON
 
-  --------------------------
+--------------------------
 
-  1º Programa
+1º Programa
 
-  BEGIN
-      DBMS_OUTPUT.PUT_LINE('Bloco Ok!!!!');
-  END;
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('Bloco Ok!!!!');
+END;
 
-  --------------------------
+--------------------------
 
-  -- Trabalhando com variaveis
+-- Trabalhando com variáveis
 
-  DECLARE
-      v1 NUMBER(2) := 10;
-      v2 NUMBER(2) := 10;
-      re NUMBER(3);
-  BEGIN
-      re := v1 + v2;
-      DBMS_OUTPUT.PUT_LINE(re);
-  END;
+DECLARE
+    v1 NUMBER(2) := 10;
+    v2 NUMBER(2) := 10;
+    re NUMBER(3);
+BEGIN
+    re := v1 + v2;
+    DBMS_OUTPUT.PUT_LINE(re);
+END;
 
-  --------------------------
+--------------------------
 
-  -- Imprimir mensagem e concatenar
+-- Imprimir mensagem e concatenar
 
-  DECLARE
-      v1 NUMBER(2) := 10;
-      v2 NUMBER(2) := 10;
-      re NUMBER(3) := v1 + v2;
-  BEGIN
-      DBMS_OUTPUT.PUT_LINE('Resultado: ' || re);
-  END;
+DECLARE
+    v1 NUMBER(2) := 10;
+    v2 NUMBER(2) := 10;
+    re NUMBER(3) := v1 + v2;
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('Resultado: ' || re);
+END;
 
   --------------------------
 
@@ -69,7 +69,7 @@
       DBMS_OUTPUT.PUT_LINE('Novo salário R$ '|| 1320*1.25 ||',00');
   END;
 
-  ------------2-------------
+  ------------Ex2-------------
 
   02 - Criar um bloco PL-SQL para calcular o valor em 
   REAIS de 45 dólares, sendo que o valor do câmbio a ser considerado 
