@@ -1,5 +1,5 @@
 Aula 01 - Introdução blocos anônimos 
-(08/08/2023)
+(07/08/2023)
 
 1º Comando a ser executado:
 Habilitando a saída de dados de um bloco PL
@@ -81,6 +81,7 @@ REAIS de 45 dólares, sendo que o valor do câmbio a ser considerado
 é de R$ 4.90 no qual estes valores deverão ser constantes dentro do 
 bloco.
 
+SET SERVEROUTPUT ON
 DECLARE
     v_dolar NUMBER(10,2) := 4.90;
     v_real v_dolar%TYPE := v_dolar * 45;
@@ -96,6 +97,7 @@ END;
 dólares informados, sendo que o valor do Câmbio a ser considerado é 
 de 5,35.
 
+SET SERVEROUTPUT ON
 DECLARE
     v_dolar number(8,2) := 9.18;
     v_cota v_dolar%type := 4.90;
@@ -115,6 +117,7 @@ OBSERVAÇÃO:
 montante financiado 
 3 – No final informar o valor de cada parcela.
 
+SET SERVEROUTPUT ON
 DECLARE
     v_bem number(10,2) := &valor_bem;
     v_parc v_bem%type:= v_bem * 1.03 / 10;
@@ -140,7 +143,7 @@ A – Pagamento em 6 parcelas: 10%.
 B – Pagamento em 12 parcelas: 15%. 
 C – Pagamento em 18 parcelas: 20%.
 
-
+SET SERVEROUTPUT ON
 DECLARE
     v_carro NUMBER(10,2) := 50000 * 0.8;
     v_presta v_carro%TYPE;
