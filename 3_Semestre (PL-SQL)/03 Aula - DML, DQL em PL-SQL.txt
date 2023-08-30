@@ -110,7 +110,8 @@ DECLARE
     v_total NUMBER(12,2);
     v_qtdpro NUMBER(10,2);
 BEGIN
-    SELECT ds_pro, pr_pro, qtd_pro INTO v_dspro, v_prpro, v_qtdpro
+    SELECT ds_pro, pr_pro, qtd_pro 
+    INTO v_dspro, v_prpro, v_qtdpro
     FROM produto WHERE id_pro = v_idpro;
 
     v_total := v_compra * v_prpro;
@@ -125,5 +126,43 @@ BEGIN
 END;
 /
 
-escolher s evai ser feita a compra ou a venda do produto
+escolher se vai ser feita a compra ou a venda do produto
+
+
+SET SERVEROUTPUT ON
+DECLARE
+    v_idpro NUMBER(3) := &cd_produto;
+    v_compra NUMBER(10,2) := &qtd_compra;
+    v_opcao VARCHAR2(10) := UPPER('&compra_ou_venda');
+    v_dspro VARCHAR2(30);
+    v_prpro NUMBER(10,2);
+    v_total NUMBER(12,2);
+    v_qtdpro NUMBER(10,2);
+BEGIN
+    SELECT ds_pro, pr_pro, qtd_pro 
+    INTO v_dspro, v_prpro, v_qtdpro
+    FROM produto WHERE id_pro = v_idpro;
+
+    IF v_opcao = 'COMPRA' THEN
+
+	v_total := v_compra * v_prpro;
+	
+	UPDATE produto SET qtd_pro = qtd_pro - v_compra
+        WHERE id_pro = v_idpro;
+
+    	DBMS_OUTPUT.PUT_LINE('Descrição do produto: ' || v_dspro);
+    	DBMS_OUTPUT.PUT_LINE('Preço do produto: ' || v_prpro);
+    	DBMS_OUTPUT.PUT_LINE('Qtd comprada: ' || v_compra);
+    	DBMS_OUTPUT.PUT_LINE('Total da compra - R$: '|| v_total);
+	
+    ELSIF v_opcao = 'VENDA' THEN
+        v_total := v_prpro - 
+
+    ELSE
+	DBMS_OUTPUT.PUT_LINE('Opção Invalida');
+    END IF;
+
+END;
+/
+
 
