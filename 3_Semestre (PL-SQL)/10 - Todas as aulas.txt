@@ -1,0 +1,378 @@
+------------ EXERCÍCIOS ------------
+
+01 - Criar um bloco PL-SQL para calcular o valor do novo 
+salário mínimo que deverá ser de 25% em cima do atual, que é de 
+R$1320.
+
+SET SERVEROUTPUT ON
+DECLARE
+    v_sal_atual NUMBER(10,2) := 1320.00;
+    v_sal_reaj NUMBER(10,2);
+BEGIN
+    v_sal_reaj := v_sal_atual * 1.25;
+    DBMS_OUTPUT.PUT_LINE('Salário atual - R$: '||v_sal_atual);
+    DBMS_OUTPUT.PUT_LINE('Salário reajustado - R$: '||v_sal_reaj);
+END;
+/
+
+------------Ex2-------------
+
+02 - Criar um bloco PL-SQL para calcular o valor em 
+REAIS de 45 dólares, sendo que o valor do câmbio a ser considerado 
+é de R$ 4.90 no qual estes valores deverão ser constantes dentro do 
+bloco.
+
+SET SERVEROUTPUT ON
+DECLARE
+    v_dolar NUMBER(10,2) := 4.90;
+    v_real v_dolar%TYPE := v_dolar * 45;
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('Cotação dólar 08/08/2023: '||v_dolar);
+    DBMS_OUTPUT.PUT_LINE('Conversão US$ 45.00 em R$: '||v_real);
+END;
+/
+
+------------3-------------
+
+03 - Criar um bloco PL-SQL para converter em REAIS os 
+dólares informados, sendo que o valor do Câmbio a ser considerado é 
+de 5,35.
+
+SET SERVEROUTPUT ON
+DECLARE
+    v_dolar number(8,2) := 9.18;
+    v_cota v_dolar%type := 4.90;
+    v_real v_dolar%type;
+BEGIN
+    v_real := v_dolar * v_cota;
+    DBMS_OUTPUT.PUT_LINE('US$ '||v_dolar||' convertido em Real: '||v_real);
+END;
+
+------------4-------------
+
+04 - Criar um bloco PL-SQL para calcular o valor das 
+parcelas de uma compra de um carro, nas seguintes condições: 
+OBSERVAÇÃO: 
+1 - Parcelas para aquisição em 10 pagamentos. 
+2 - O valor total dos juros é de 3% e deverá ser aplicado sobre o 
+montante financiado 
+3 – No final informar o valor de cada parcela.
+
+SET SERVEROUTPUT ON
+DECLARE
+    v_bem number(10,2) := &valor_bem;
+    v_parc v_bem%type:= v_bem * 1.03 / 10;
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('Valor do bem R$ '||v_bem);
+    DBMS_OUTPUT.PUT_LINE('Em 10x com 3% de juros - R$ '||v_parc);
+END;
+
+------------5-------------
+
+05 - Criar um bloco PL-SQL para calcular o valor de cada 
+parcela de uma compra de um carro, nas seguintes condições:
+- Parcelas para aquisição em 6 pagamentos. 
+- Parcelas para aquisição em 12 pagamentos. 
+- Parcelas para aquisição em 18 pagamentos. 
+OBSERVAÇÃO: 
+1 – Deverá ser dada uma entrada de 20% do valor da compra. 
+2 – Deverá ser aplicada uma taxa juros, no saldo restante, nas 
+seguintes condições: 
+3 – No final informar o valor das parcelas para as 3 formas de 
+pagamento, com o Valor de aquisição de 10.000.
+A – Pagamento em 6 parcelas: 10%. 
+B – Pagamento em 12 parcelas: 15%. 
+C – Pagamento em 18 parcelas: 20%.
+
+SET SERVEROUTPUT ON
+DECLARE
+    v_carro NUMBER(10,2) := 50000 * 0.8;
+    v_presta v_carro%TYPE;
+BEGIN
+    v_presta := (v_carro * 1.1) / 6;
+    DBMS_OUTPUT.PUT_LINE('Valor da prestação em 6x: '||v_presta);
+    v_presta := (v_carro * 1.15) / 12;
+    DBMS_OUTPUT.PUT_LINE('Valor da prestação em 12x: '||v_presta);
+    v_presta := (v_carro * 1.2) / 18;
+    DBMS_OUTPUT.PUT_LINE('Valor da prestação em 18x: '||v_presta);
+END;
+/
+
+----------------------------------------------------------------------------------------
+
+EXERCÍCIOS
+
+1º) Criar um bloco PL/SQL para analisar a entrada de dados do 
+sexo de um cliente. O bloco deverá receber o dado sobre o
+sexo: para masculino - M ou m, para feminino -F ou f. 
+Qualquer dado fora desta configuração deverá ser exibido 
+'Outros', para M ou m 'Masculino', para F ou f 'Feminino'.
+
+SET SERVEROUTPUT ON
+DECLARE
+    v_sexo CHAR(1) := UPPER('&sexo'); 
+BEGIN
+    IF v_sexo = 'F' THEN
+        DBMS_OUTPUT.PUT_LINE('Feminino');S
+    ELSIF v_sexo = 'M' THEN
+        DBMS_OUTPUT.PUT_LINE('Masculino');
+    ELSE 
+        DBMS_OUTPUT.PUT_LINE('Outro');
+    END IF;
+END;
+/
+
+------------Ex2-------------
+
+2º) Refaça o exercício 5 da aula anterior. Dessa vez, 
+utilize as estruturas de decisão (IF, ELSIF, ELSE)
+
+
+SET SERVEROUTPUT ON
+DECLARE
+    v_carro NUMBER(10,2) := 50000 * 0.8;
+    v_presta v_carro%TYPE;
+    v_opcao v_carro%TYPE := &quantas_prestacoes;
+BEGIN
+    IF v_opcao = 6 THEN
+        v_presta := (v_carro * 1.1) / 6;
+        DBMS_OUTPUT.PUT_LINE('Valor da prestação em 6x: '||v_presta);
+    ELSIF v_opcao = 12 THEN
+        v_presta := (v_carro * 1.15) / 12;
+        DBMS_OUTPUT.PUT_LINE('Valor da prestação em 12x: '||v_presta);
+    ELSIF v_opcao = 18 THEN
+        v_presta := (v_carro * 1.2) / 18;
+        DBMS_OUTPUT.PUT_LINE('Valor da prestação em 18x: '||v_presta);
+    ELSE
+        DBMS_OUTPUT.PUT_LINE('Valor Prestação não encontrado!');
+    END IF;                
+END;
+/
+
+------------Ex3-------------
+
+3º) Criar um bloco PL/SQL para calcular a média da fiap.
+Entrada das notas via teclado.
+
+SET SERVEROUTPUT ON
+DECLARE
+    v_cp1 NUMBER(10,2) := &checkpoint_1;
+    v_cp2 v_cp1%TYPE := &checkpoint_2;
+    v_cp3 v_cp1%TYPE := &checkpoint_3;
+    v_resultado v_cp1%TYPE;
+BEGIN
+    IF ((v_cp1 < v_cp2) AND (v_cp1 < v_cp3)) THEN
+        v_resultado := ((v_cp2 + v_cp3) / 2);
+        DBMS_OUTPUT.PUT_LINE('Média: ' || v_resultado);
+    ELSIF ((v_cp2 < v_cp1) AND (v_cp2 < v_cp3)) THEN
+        v_resultado := ((v_cp1 + v_cp3) / 2);
+        DBMS_OUTPUT.PUT_LINE('Média: ' || v_resultado);
+    ELSE
+        v_resultado := ((v_cp1 + v_cp2) / 2);
+        DBMS_OUTPUT.PUT_LINE('Média: ' || v_resultado);     
+    END IF;
+END;
+/
+
+
+----------------------------------------------------------------------------------------
+
+EXERCÍCIO
+
+1º) Criar tabela produto e inserir dados
+
+DROP TABLE produto; CASCADE CONSTRAINTS;
+
+CREATE TABLE produto (
+   id_pro NUMBER(3) PRIMARY KEY,
+   ds_pro VARCHAR2(30) NOT NULL UNIQUE,
+   pr_pro NUMBER(10,2) NOT NULL,
+   qtd_pro NUMBER(10,2) NOT NULL
+);
+
+BEGIN
+    INSERT INTO produto VALUES (1, 'Pneu', 350.56, 100);
+    INSERT INTO produto VALUES (2, 'Multimidia', 2380.6, 5);
+    INSERT INTO produto VALUES (3, 'Chaveiro', 12.4, 150);
+    COMMIT;
+END;
+
+1.1º) Criar um bloco PL/SQL para que o usuário possa selecionar
+a quantidade de produtos que ele deseja, atravez do seu ID. Ao selecionar
+a quantidade o programa deve atualizar na tabela o novo valor da quantidade
+e exibir na tela o resultado.
+
+SET SERVEROUTPUT ON
+DECLARE
+    v_idpro NUMBER(3) := &cd_produto;
+    v_compra NUMBER(10,2) := &qtd_compra;
+    v_dspro VARCHAR2(30);
+    v_prpro NUMBER(10,2);
+    v_total NUMBER(12,2);
+    v_qtdpro NUMBER(10,2);
+BEGIN
+    SELECT ds_pro, pr_pro, qtd_pro 
+    INTO v_dspro, v_prpro, v_qtdpro
+    FROM produto WHERE id_pro = v_idpro;
+
+    v_total := v_compra * v_prpro;
+
+    UPDATE produto SET qtd_pro = qtd_pro - v_compra
+    WHERE id_pro = v_idpro;
+
+    DBMS_OUTPUT.PUT_LINE('Descrição do produto: ' || v_dspro);
+    DBMS_OUTPUT.PUT_LINE('Preço do produto: ' || v_prpro);
+    DBMS_OUTPUT.PUT_LINE('Qtd comprada: ' || v_compra);
+    DBMS_OUTPUT.PUT_LINE('Total da compra - R$: '|| v_total);
+END;
+/
+
+escolher se vai ser feita a compra ou a venda do produto
+
+
+SET SERVEROUTPUT ON
+DECLARE
+    v_idpro NUMBER(3) := &cd_produto;
+    v_compra NUMBER(10,2) := &qtd_compra;
+    v_opcao VARCHAR2(10) := UPPER('&compra_ou_venda');
+    v_dspro VARCHAR2(30);
+    v_prpro NUMBER(10,2);
+    v_total NUMBER(12,2);
+    v_qtdpro NUMBER(10,2);
+BEGIN
+    SELECT ds_pro, pr_pro, qtd_pro 
+    INTO v_dspro, v_prpro, v_qtdpro
+    FROM produto WHERE id_pro = v_idpro;
+
+    IF v_opcao = 'COMPRA' THEN
+
+	v_total := v_compra * v_prpro;
+	
+	UPDATE produto SET qtd_pro = qtd_pro - v_compra
+        WHERE id_pro = v_idpro;
+
+    	DBMS_OUTPUT.PUT_LINE('Descrição do produto: ' || v_dspro);
+    	DBMS_OUTPUT.PUT_LINE('Preço do produto: ' || v_prpro);
+    	DBMS_OUTPUT.PUT_LINE('Qtd comprada: ' || v_compra);
+    	DBMS_OUTPUT.PUT_LINE('Total da compra - R$: '|| v_total);
+	
+    ELSIF v_opcao = 'VENDA' THEN
+        v_total := v_prpro - 
+
+    ELSE
+	DBMS_OUTPUT.PUT_LINE('Opção Invalida');
+    END IF;
+
+END;
+/
+
+----------------------------------------------------------------------------------------
+
+EXERCÍCIOS
+
+1º) Montar um bloco de programação que realize o
+processamento de uma tabuada qualquer, por
+exemplo a tabuada do número 5.
+
+-----LOOP-----
+
+SET SERVEROUTPUT ON
+DECLARE
+    v_tabuada NUMBER(10) := &Tabuada;
+    v_cont v_tabuada%TYPE := 0;
+BEGIN
+    LOOP
+        DBMS_OUTPUT.PUT_LINE(v_tabuada || ' X ' || v_cont || ' = ' || (v_tabuada * v_cont));
+        v_cont := v_cont + 1;
+        EXIT WHEN v_cont > 10;
+    END LOOP;         
+END;
+/
+
+-----WHILE-----
+
+SET SERVEROUTPUT ON
+DECLARE
+    v_tabuada NUMBER(10) := &Tabuada;
+    v_cont v_tabuada%TYPE := 0;
+BEGIN
+    WHILE v_cont <= 10 LOOP
+         DBMS_OUTPUT.PUT_LINE(v_tabuada || ' X ' || v_cont || ' = ' || (v_tabuada * v_cont));
+         v_cont := v_cont + 1;
+    END LOOP;         
+END;
+/
+
+------FOR------
+
+SET SERVEROUTPUT ON
+DECLARE
+    v_tabuada NUMBER(10) := &Tabuada;
+    v_cont v_tabuada%TYPE := 0;
+BEGIN
+    FOR v_cont IN 1..10 LOOP
+         DBMS_OUTPUT.PUT_LINE(v_tabuada || ' X ' || v_cont || ' = ' || (v_tabuada * v_cont));
+    END LOOP;         
+END;
+/
+
+--------------------------
+
+2º) Em um intervalo numérico inteiro, informar
+quantos números são pares e quantos são ímpares.
+
+SET SERVEROUTPUT ON
+DECLARE
+    v_inicio NUMBER(3) := &Inicio;
+    v_fim v_inicio%TYPE := &Fim;
+    v_par v_inicio%TYPE := 0;
+    v_impar v_inicio%TYPE := 0;
+BEGIN
+    FOR v_conta IN v_inicio..v_fim LOOP
+        IF MOD(v_conta, 2) = 0 THEN
+           v_par := v_par + 1;
+        ELSE
+           v_impar := v_impar + 1;
+        END IF;
+    END LOOP;
+
+    DBMS_OUTPUT.PUT_LINE('Total de pares ' || v_par);
+    DBMS_OUTPUT.PUT_LINE('Total de ímpares ' || v_impar);
+END;
+/
+
+--------------------------
+
+
+3º) Exibir e média dos valores pares em um intervalo
+numérico e soma dos ímpares.
+
+SET SERVEROUTPUT ON
+DECLARE
+    v_inicio NUMBER(3) := &Inicio;
+    v_fim v_inicio%TYPE := &Fim;
+    v_par v_inicio%TYPE := 0;
+    v_impar v_inicio%TYPE := 0;
+    v_soma_impar v_inicio%TYPE := 0;
+    v_media NUMBER(10,2);
+BEGIN
+    FOR v_conta IN v_inicio..v_fim LOOP
+        IF MOD(v_conta, 2) = 0 THEN
+            v_par := v_par + 1;
+            v_media := v_media + v_conta;
+        ELSE
+            v_impar := v_impar + 1;
+            v_soma_impar := v_soma_impar + v_conta;
+        END IF;
+    END LOOP;
+
+    IF v_par > 0 THEN
+        v_media := v_media / v_par;
+    END IF;
+
+    DBMS_OUTPUT.PUT_LINE('Total de pares: ' || v_par);
+    DBMS_OUTPUT.PUT_LINE('Média dos valores pares: ' || v_media);
+    DBMS_OUTPUT.PUT_LINE('Soma dos valores ímpares: ' || v_soma_impar);
+END;
+/
+
