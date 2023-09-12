@@ -80,7 +80,7 @@ EXERCÍCIO
 
 1º) Criar tabela produto e inserir dados
 
-DROP TABLE produto; CASCADE CONSTRAINTS;
+DROP TABLE produto CASCADE CONSTRAINTS;
 
 CREATE TABLE produto (
    id_pro NUMBER(3) PRIMARY KEY,
@@ -95,6 +95,7 @@ BEGIN
     INSERT INTO produto VALUES (3, 'Chaveiro', 12.4, 150);
     COMMIT;
 END;
+
 
 1.1º) Criar um bloco PL/SQL para que o usuário possa selecionar
 a quantidade de produtos que ele deseja, atravez do seu ID. Ao selecionar

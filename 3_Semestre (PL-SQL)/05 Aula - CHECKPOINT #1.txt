@@ -82,16 +82,18 @@ considerando que o placar real foi 3x2:
 
 Criar a tabela apostador e inserir os dados da tabela
 
-Criar um bloco que calcula a pontuação dos apostadores, entrada de dados:Placar do jogo e código do apostador, atualizar a coluna pontos da tabela apostador via bloco de programação.
+Criar um bloco que calcula a pontuação dos apostadores, entrada de dados:
+Placar do jogo e código do apostador, atualizar a coluna pontos da tabela
+apostador via bloco de programação.
 
 DROP TABLE apostador;
 
 CREATE TABLE apostador (
-        Id_apostador NUMBER(10) PRIMARY KEY,
-        Nome_apostador VARCHAR2(50),
-        Gols_time_1 NUMBER(3),
-        Gols_time_2 NUMBER(3),
-        Pontos NUMBER(3)
+    Id_apostador NUMBER(10) PRIMARY KEY,
+    Nome_apostador VARCHAR2(50),
+    Gols_time_1 NUMBER(3),
+    Gols_time_2 NUMBER(3),
+    Pontos NUMBER(3)
 );
 
 SELECT * FROM apostador;
@@ -100,12 +102,17 @@ SELECT * FROM apostador;
 
 DECLARE
 BEGIN
-    INSERT INTO apostador (Id_apostador, Nome_apostador, Gols_time_1, Gols_time_2, Pontos) VALUES (1, 'Marcel', 0, 1, NULL);
-    INSERT INTO apostador (Id_apostador, Nome_apostador, Gols_time_1, Gols_time_2, Pontos) VALUES (2, 'Rafael', 2, 0, NULL);
-    INSERT INTO apostador (Id_apostador, Nome_apostador, Gols_time_1, Gols_time_2, Pontos) VALUES (3, 'Denis', 1, 1, NULL);
-    INSERT INTO apostador (Id_apostador, Nome_apostador, Gols_time_1, Gols_time_2, Pontos)VALUES (4, 'Vanessa', 3, 2, NULL);
+    INSERT INTO apostador (Id_apostador, Nome_apostador, Gols_time_1, Gols_time_2, Pontos) 
+	VALUES (1, 'Marcel', 0, 1, NULL);
+    INSERT INTO apostador (Id_apostador, Nome_apostador, Gols_time_1, Gols_time_2, Pontos) 
+	VALUES (2, 'Rafael', 2, 0, NULL);
+    INSERT INTO apostador (Id_apostador, Nome_apostador, Gols_time_1, Gols_time_2, Pontos) 
+	VALUES (3, 'Denis', 1, 1, NULL);
+    INSERT INTO apostador (Id_apostador, Nome_apostador, Gols_time_1, Gols_time_2, Pontos) 
+	VALUES (4, 'Vanessa', 3, 2, NULL);
     COMMIT;
 END;
+
 
 DECLARE
     v_apostador_id NUMBER(10);
@@ -135,5 +142,4 @@ BEGIN
 END;
 
 SELECT * FROM apostador;
-
 

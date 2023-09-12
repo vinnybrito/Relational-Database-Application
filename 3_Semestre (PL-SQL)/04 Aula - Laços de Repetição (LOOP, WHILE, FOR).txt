@@ -3,7 +3,6 @@ Aula 04 - Laços de Repetição (LOOP, WHILE, FOOR)
 
 --------------------------
 
-
 -- Laços de repetição ( LOOP )
 
 SET SERVEROUTPUT ON
@@ -166,5 +165,4 @@ BEGIN
     DBMS_OUTPUT.PUT_LINE('Soma dos valores ímpares: ' || v_soma_impar);
 END;
 /
-
 
