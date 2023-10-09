@@ -1,0 +1,121 @@
+Aula 08 - Exceptions
+(25/09/2023)
+
+Data da CP2 - (09/10/2023)
+
+-----------------------------------------
+
+EXCEPTIONS
+
+Exception - Tratamento de erros 
+- pré definida
+
+DECLARE
+      ...
+BEGIN	
+      ...
+EXCEPTION
+    WHEN NOME_DA_EXCEÇÃO THEN
+    RELAÇÃO_DE_COMANDOS;
+    WHEN NOME_DA_EXCEÇÃO THEN
+    RELAÇÃO_DE_COMANDOS;
+    ...
+END;
+/
+
+-----------------------------------------
+
+-- EXEMPLO
+
+DROP TABLE aluno CASCADE CONSTRAINTS;
+
+CREATE TABLE aluno (
+    ra NUMBER(1) PRIMARY KEY, 
+    nome VARCHAR(20)
+);
+
+INSERT INTO aluno VALUES (1,'Marcel');
+INSERT INTO aluno VALUES (2,'Adriana');
+INSERT INTO aluno VALUES (3,'Samuel');
+COMMIT;
+
+SELECT * FROM aluno;
+
+SET SERVEROUTPUT ON
+BEGIN
+    INSERT INTO aluno VALUES (1,'Marcel');
+EXCEPTION
+    WHEN dup_val_on_index THEN
+    DBMS_OUTPUT.PUT_LINE('Operação inválida');
+END;
+
+-----------------------------------------
+
+
+DECLARE
+    V_RA ALUNO.RA%TYPE := 9;
+    V_NOME ALUNO.NOME%TYPE;
+BEGIN
+    SELECT NOME INTO V_NOME FROM ALUNO WHERE RA = V_RA;
+    DBMS_OUTPUT.PUT_LINE(V_RA ||' - '|| V_NOME);
+EXCEPTION
+    WHEN others THEN
+        DBMS_OUTPUT.PUT_LINE ('Não sei de nada, se vira');
+    /*WHEN NO_DATA_FOUND THEN
+          DBMS_OUTPUT.PUT_LINE ('Não há nenhum aluno com este RA');
+      WHEN TOO_MANY_ROWS THEN
+	  DBMS_OUTPUT.PUT_LINE ('Há mais de um aluno com este RA');*/
+END;
+/
+
+-----------------------------------------
+
+-- PERSONALIZADA
+
+DECLARE
+    NOME_DA_EXCEÇÃO EXCEPTION;
+BEGIN
+    ...
+    IF ... THEN
+	RAISE NOME_DA_EXCEÇÃO;
+    END IF;
+    ...
+EXCEPTION
+    WHEN NOME_DA_EXCEÇÃO THEN
+    RELAÇÃO_DE_COMANDOS
+END;
+/
+
+
+SELECT * FROM aluno;
+
+
+DECLARE
+    V_CONTA NUMBER(2);
+    TURMA_CHEIA EXCEPTION;
+BEGIN
+    SELECT COUNT(RA) INTO V_CONTA FROM ALUNO;
+    IF V_CONTA = 5 THEN 
+	RAISE TURMA_CHEIA;
+    ELSE 
+	INSERT INTO ALUNO VALUES (6,'Giovanna');
+    END IF;
+EXCEPTION
+    WHEN TURMA_CHEIA THEN
+    DBMS_OUTPUT.PUT_LINE('Não foi possível incluir: turma cheia');
+END;
+
+-----------------------------------------
+
+EXERCÍCIO
+
+Criar as tabelas: Cliente, ContaCorrente, Movimentação para gerenciar as operações de uma CC, 
+deverão existir dois tipos de CC, as básicas que não permitem saques maiores que o saldo e as especiais
+que permitirão estes saques em até 50% do saldo naquele momento do saque.
+Vc deverá:
+Criar as tabelas para funcionamento do processo - movimentação de CC
+Criar os blocos de programação:
+- um para cadastro do cliente, sua conta.
+- um para cadastro da movimentação, créditos - C e débitos - D, sempre exibir o saldo após a movimentação.
+- um para saque, alertando se é possível ou não realizar o mesmo e exibir o saldo no momento.
+* não esqueça das exceptions
