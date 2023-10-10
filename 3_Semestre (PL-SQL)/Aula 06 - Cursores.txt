@@ -26,6 +26,7 @@ BEGIN
     INSERT INTO funcionario VALUES(4, 'Valéria', 7300.00, '08-06-2015');
     COMMIT;
 END;
+/
 
 --------------------------
 
