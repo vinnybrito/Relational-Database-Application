@@ -54,9 +54,14 @@ BEGIN
     v_tec_id := 1;
     v_os_id := 1;
 
-    SELECT COUNT(*) INTO v_count_tec FROM tecnico WHERE id_tec = v_tec_id;
-    SELECT COUNT(*) INTO v_count_os FROM ordem_servico WHERE id_os = v_os_id;
-    SELECT COUNT(*) INTO v_count_rel FROM ordem_tec WHERE fk_id_tec = v_tec_id AND fk_id_os = v_os_id;
+    SELECT COUNT(*) INTO v_count_tec FROM tecnico 
+    WHERE id_tec = v_tec_id;
+
+    SELECT COUNT(*) INTO v_count_os FROM ordem_servico 
+    WHERE id_os = v_os_id;
+
+    SELECT COUNT(*) INTO v_count_rel FROM ordem_tec 
+    WHERE fk_id_tec = v_tec_id AND fk_id_os = v_os_id;
 
     IF v_count_tec > 0 THEN
         DBMS_OUTPUT.PUT_LINE('Técnico já foi cadastrado.');
@@ -65,8 +70,8 @@ BEGIN
     ELSIF v_count_rel > 0 THEN
         DBMS_OUTPUT.PUT_LINE('Relação entre técnico-ordem de serviço já foi cadastrada.');
     ELSE
-        INSERT INTO tecnico (id_tec, nome_tec) VALUES (v_tec_id, 'Vinicius');
-        INSERT INTO ordem_servico (id_os, data_abertura, vlr_por_hora) VALUES (v_os_id, SYSDATE, 50.00);
+        INSERT INTO tecnico (id_tec, nome_tec) VALUES(v_tec_id, 'Vinicius');
+        INSERT INTO ordem_servico (id_os, data_abertura, vlr_por_hora) VALUES(v_os_id, SYSDATE, 50.00);
         INSERT INTO ordem_tec (dt_fim, dias_trabalhados, fk_id_os, fk_id_tec) 
         VALUES (SYSDATE, 5, v_os_id, v_tec_id);
 
@@ -74,7 +79,7 @@ BEGIN
     END IF;
 EXCEPTION
     WHEN OTHERS THEN
-        DBMS_OUTPUT.PUT_LINE('Um erro ocorreu: ' || SQLERRM);
+        DBMS_OUTPUT.PUT_LINE('Aconteceu um erro: ' || SQLERRM);
 END;
 /
 
