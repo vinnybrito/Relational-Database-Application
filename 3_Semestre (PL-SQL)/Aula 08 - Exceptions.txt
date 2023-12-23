@@ -86,9 +86,7 @@ EXCEPTION
 END;
 /
 
-
 SELECT * FROM aluno;
-
 
 DECLARE
     V_CONTA NUMBER(2);
@@ -152,14 +150,16 @@ DECLARE
     v_cliente_id NUMBER;
     v_conta_id NUMBER;
 BEGIN
-    INSERT INTO Cliente(cliente_id, nome, cpf) VALUES (1, 'João', '12345678901');
+    INSERT INTO Cliente(cliente_id, nome, cpf) 
+    VALUES (1, 'João', '12345678901');
 
     SELECT cliente_id 
     INTO v_cliente_id 
     FROM Cliente 
     WHERE cpf = '12345678901';
     
-    INSERT INTO ContaCorrente(conta_id, cliente_id, tipo_conta) VALUES (1, v_cliente_id, 'Básica');
+    INSERT INTO ContaCorrente(conta_id, cliente_id, tipo_conta) 
+    VALUES (1, v_cliente_id, 'Básica');
     COMMIT;
 
     DBMS_OUTPUT.PUT_LINE('Cadastro de cliente e conta realizado com sucesso.');

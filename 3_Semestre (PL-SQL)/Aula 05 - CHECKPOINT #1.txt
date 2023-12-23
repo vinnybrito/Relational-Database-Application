@@ -5,11 +5,15 @@ Aula 05 - CHECKPOINT #1
 
 EXERCÍCIO 1 - 4 PONTOS
 
-1º) Suponha que você está programando um módulo contador de cédulas para caixas eletrônicos.
-Escreva um programa que informa com quantas cédulas de Real podemos representar um dado valor.
-Exemplo de resposta: R$ 218 = 2 cédulas de 100, 1 cédula de 10, 1 cédula de 5, 1 cédula de 2 e
-1 cédula de 1. Procure minimizar o número de cédulas usadas. Desconsidere valores com centavos,
-e suponha que a máquina sempre tem disponíveis as cédulas necessárias.
+1º) Suponha que você está programando um módulo contador de cédulas para
+caixas eletrônicos. Escreva um programa que informa com quantas cédulas 
+de Real podemos representar um dado valor. 
+
+EXEMPLO DE RESPOSTA: R$ 218 = 2 cédulas de 100, 1 cédula de 10, 1 cédula de 5,
+1 cédula de 2 e 1 cédula de 1. 
+
+Procure minimizar o número de cédulas usadas. Desconsidere valores com
+centavos, e suponha que a máquina sempre tem disponíveis as cédulas necessárias.
 
 SET SERVEROUTPUT ON
 DECLARE
@@ -48,6 +52,7 @@ BEGIN
     END LOOP;
 
     DBMS_OUTPUT.PUT_LINE('R$' || v_valor_real || ' = ');
+
     IF v_quant_100 > 0 THEN
         DBMS_OUTPUT.PUT_LINE(v_quant_100 || ' de R$ 100');
     END IF;
@@ -70,6 +75,7 @@ BEGIN
         DBMS_OUTPUT.PUT_LINE(v_quant_1 || ' de R$ 1');
     END IF;
 END;
+/
 
 --------------------------
 

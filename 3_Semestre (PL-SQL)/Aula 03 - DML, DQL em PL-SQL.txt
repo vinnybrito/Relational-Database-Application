@@ -1,7 +1,7 @@
 Aula 03 - Instruções DML, DQL em blocos PL/SQL
+(21/08/2023)
 
-CHECKPOINT #1 - 04/09 - Individual ou em dupla
-21/08/2023
+-- CHECKPOINT #1 - (04/09) - Individual ou em dupla
 
 SET SERVEROUTPUT ON
 SET VERIFY OFF
@@ -78,7 +78,7 @@ END;
 
 EXERCÍCIO
 
-1º) Criar tabela produto e inserir dados
+1º) Criar tabela produto e inserir dados.
 
 DROP TABLE produto CASCADE CONSTRAINTS;
 
@@ -96,11 +96,12 @@ BEGIN
     COMMIT;
 END;
 
+------------------
 
 1.1º) Criar um bloco PL/SQL para que o usuário possa selecionar
-a quantidade de produtos que ele deseja, atravez do seu ID. Ao selecionar
-a quantidade o programa deve atualizar na tabela o novo valor da quantidade
-e exibir na tela o resultado.
+a quantidade de produtos que ele deseja, atravez do seu ID. Ao
+selecionar a quantidade o programa deve atualizar na tabela o 
+novo valor da quantidade e exibir na tela o resultado.
 
 SET SERVEROUTPUT ON
 DECLARE
@@ -113,7 +114,8 @@ DECLARE
 BEGIN
     SELECT ds_pro, pr_pro, qtd_pro 
     INTO v_dspro, v_prpro, v_qtdpro
-    FROM produto WHERE id_pro = v_idpro;
+    FROM produto 
+    WHERE id_pro = v_idpro;
 
     v_total := v_compra * v_prpro;
 
@@ -127,7 +129,9 @@ BEGIN
 END;
 /
 
-escolher se vai ser feita a compra ou a venda do produto
+------------------
+
+Escolher se vai ser feita a compra ou a venda do produto
 
 
 SET SERVEROUTPUT ON
@@ -145,7 +149,6 @@ BEGIN
     FROM produto WHERE id_pro = v_idpro;
 
     IF v_opcao = 'COMPRA' THEN
-
 	v_total := v_compra * v_prpro;
 	
 	UPDATE produto SET qtd_pro = qtd_pro - v_compra

@@ -52,7 +52,7 @@ DECLARE
     re NUMBER(3) := v1 + v2;
 BEGIN
 -- Saída de dados
-    DBMS_OUTPUT.PUT_LINE('resultado: '||re);
+    DBMS_OUTPUT.PUT_LINE('resultado: ' || re);
 END;
 -- Fim programa
 
@@ -69,8 +69,8 @@ DECLARE
     v_sal_reaj NUMBER(10,2);
 BEGIN
     v_sal_reaj := v_sal_atual * 1.25;
-    DBMS_OUTPUT.PUT_LINE('Salário atual - R$: '||v_sal_atual);
-    DBMS_OUTPUT.PUT_LINE('Salário reajustado - R$: '||v_sal_reaj);
+    DBMS_OUTPUT.PUT_LINE('Salário atual - R$: ' || v_sal_atual);
+    DBMS_OUTPUT.PUT_LINE('Salário reajustado - R$: ' || v_sal_reaj);
 END;
 /
 
@@ -86,12 +86,12 @@ DECLARE
     v_dolar NUMBER(10,2) := 4.90;
     v_real v_dolar%TYPE := v_dolar * 45;
 BEGIN
-    DBMS_OUTPUT.PUT_LINE('Cotação dólar 08/08/2023: '||v_dolar);
-    DBMS_OUTPUT.PUT_LINE('Conversão US$ 45.00 em R$: '||v_real);
+    DBMS_OUTPUT.PUT_LINE('Cotação dólar 08/08/2023: ' || v_dolar);
+    DBMS_OUTPUT.PUT_LINE('Conversão US$ 45.00 em R$: ' || v_real);
 END;
 /
 
-------------3-------------
+------------Ex3-------------
 
 03 - Criar um bloco PL-SQL para converter em REAIS os 
 dólares informados, sendo que o valor do Câmbio a ser considerado é 
@@ -104,10 +104,10 @@ DECLARE
     v_real v_dolar%type;
 BEGIN
     v_real := v_dolar * v_cota;
-    DBMS_OUTPUT.PUT_LINE('US$ '||v_dolar||' convertido em Real: '||v_real);
+    DBMS_OUTPUT.PUT_LINE('US$ ' || v_dolar || ' convertido em Real: ' || v_real);
 END;
 
-------------4-------------
+------------Ex4-------------
 
 04 - Criar um bloco PL-SQL para calcular o valor das 
 parcelas de uma compra de um carro, nas seguintes condições: 
@@ -122,11 +122,11 @@ DECLARE
     v_bem number(10,2) := &valor_bem;
     v_parc v_bem%type:= v_bem * 1.03 / 10;
 BEGIN
-    DBMS_OUTPUT.PUT_LINE('Valor do bem R$ '||v_bem);
-    DBMS_OUTPUT.PUT_LINE('Em 10x com 3% de juros - R$ '||v_parc);
+    DBMS_OUTPUT.PUT_LINE('Valor do bem R$ ' || v_bem);
+    DBMS_OUTPUT.PUT_LINE('Em 10x com 3% de juros - R$ ' || v_parc);
 END;
 
-------------5-------------
+------------Ex5-------------
 
 05 - Criar um bloco PL-SQL para calcular o valor de cada 
 parcela de uma compra de um carro, nas seguintes condições:
@@ -149,11 +149,11 @@ DECLARE
     v_presta v_carro%TYPE;
 BEGIN
     v_presta := (v_carro * 1.1) / 6;
-    DBMS_OUTPUT.PUT_LINE('Valor da prestação em 6x: '||v_presta);
+    DBMS_OUTPUT.PUT_LINE('Valor da prestação em 6x: ' || v_presta);
     v_presta := (v_carro * 1.15) / 12;
-    DBMS_OUTPUT.PUT_LINE('Valor da prestação em 12x: '||v_presta);
+    DBMS_OUTPUT.PUT_LINE('Valor da prestação em 12x: ' || v_presta);
     v_presta := (v_carro * 1.2) / 18;
-    DBMS_OUTPUT.PUT_LINE('Valor da prestação em 18x: '||v_presta);
+    DBMS_OUTPUT.PUT_LINE('Valor da prestação em 18x: ' || v_presta);
 END;
 /
 

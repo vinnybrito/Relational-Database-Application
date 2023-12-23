@@ -1,4 +1,4 @@
-Aula 02 - Tomada de decição (IF,ELSIF,ELSE) 
+Aula 02 - Tomada de decição (IF, ELSIF, ELSE) 
 (14/08/2023)
 
 --------------------------

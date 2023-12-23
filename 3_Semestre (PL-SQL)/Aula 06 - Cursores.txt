@@ -20,10 +20,14 @@ CREATE TABLE funcionario (
 );
 
 BEGIN
-    INSERT INTO funcionario VALUES(1, 'Marcel', 10000.00, '17-04-2000');
-    INSERT INTO funcionario VALUES(2, 'Claudia', 16000.00, '12-10-1998');
-    INSERT INTO funcionario VALUES(3, 'Joaquim', 5500.00, '10-07-2010');
-    INSERT INTO funcionario VALUES(4, 'Valéria', 7300.00, '08-06-2015');
+    INSERT INTO funcionario VALUES
+        (1, 'Marcel', 10000.00, '17-04-2000');
+    INSERT INTO funcionario VALUES
+        (2, 'Claudia', 16000.00, '12-10-1998');
+    INSERT INTO funcionario VALUES
+        (3, 'Joaquim', 5500.00, '10-07-2010');
+    INSERT INTO funcionario VALUES
+        (4, 'Valéria', 7300.00, '08-06-2015');
     COMMIT;
 END;
 /
@@ -60,7 +64,8 @@ BEGIN
         LOOP
             FETCH c_exibe INTO v_exibe;
         EXIT WHEN c_exibe%NOTFOUND;
-        DBMS_OUTPUT.PUT_LINE('Nome: ' || v_exibe.nm_fun || ' -  Salário: ' || v_exibe.salario);
+        DBMS_OUTPUT.PUT_LINE('Nome: ' || v_exibe.nm_fun || 
+                             ' -  Salário: ' || v_exibe.salario);
         END LOOP;
     CLOSE c_exibe;
 END;
@@ -74,7 +79,8 @@ DECLARE
     CURSOR c_exibe IS SELECT nm_fun, salario FROM funcionario;
 BEGIN
     FOR v_exibe IN c_exibe LOOP
-            DBMS_OUTPUT.PUT_LINE('Nome: ' || v_exibe.nm_fun || ' -  Salário: ' || v_exibe.salario);
+        DBMS_OUTPUT.PUT_LINE('Nome: ' || v_exibe.nm_fun || 
+                             ' -  Salário: ' || v_exibe.salario);
     END LOOP;
 END;
 /
@@ -109,9 +115,13 @@ DECLARE
 BEGIN
     FOR V_exibe IN C_exibe LOOP
     	IF (v_exibe.tempo / 30) >= 150 THEN
-    	    UPDATE funcionario SET salario = salario * 1.1 WHERE cd_fun = v_exibe.cd_fun;
+    	    UPDATE funcionario 
+            SET salario = salario * 1.1 
+            WHERE cd_fun = v_exibe.cd_fun;
     	ELSE
-    	    UPDATE funcionario SET salario = salario * 1.05 WHERE cd_fun = v_exibe.cd_fun;
+    	    UPDATE funcionario 
+            SET salario = salario * 1.05 
+            WHERE cd_fun = v_exibe.cd_fun;
     	END IF;
     END LOOP;
 END;
