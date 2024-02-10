@@ -1,9 +1,4 @@
-CHECKPOINT #2
-(09/10/23)
-
--- NOME: Vinicius Almeida Kotchetkoff  RM:96331
--- NOME: Vinicius Rodrigues Brito      RM97473
-
+CHECKPOINT #2 - (09/10/23)
 
 ----------------------------------------------------------------
 
@@ -71,10 +66,12 @@ BEGIN
     ELSIF v_count_rel > 0 THEN
         DBMS_OUTPUT.PUT_LINE('Relação entre técnico-ordem de serviço já foi cadastrada.');
     ELSE
-        INSERT INTO tecnico (id_tec, nome_tec) VALUES(v_tec_id, 'Vinicius');
-        INSERT INTO ordem_servico (id_os, data_abertura, vlr_por_hora) VALUES(v_os_id, SYSDATE, 50.00);
+        INSERT INTO tecnico (id_tec, nome_tec) 
+            VALUES(v_tec_id, 'Vinicius');
+        INSERT INTO ordem_servico (id_os, data_abertura, vlr_por_hora) 
+            VALUES(v_os_id, SYSDATE, 50.00);
         INSERT INTO ordem_tec (dt_fim, dias_trabalhados, fk_id_os, fk_id_tec) 
-        VALUES (SYSDATE, 5, v_os_id, v_tec_id);
+             VALUES (SYSDATE, 5, v_os_id, v_tec_id);
 
         DBMS_OUTPUT.PUT_LINE('Cadastro realizado com sucesso.');
     END IF;
@@ -123,9 +120,11 @@ BEGIN
         v_tempo_total := v_tempo_total + v_tempo_trabalhado;
     
         DBMS_OUTPUT.PUT_LINE('Ordem de Serviço ID: ' || v_os_id);
-        DBMS_OUTPUT.PUT_LINE('Data de Abertura: ' || TO_CHAR(v_os_data_abertura, 'DD-MON-YYYY'));
+        DBMS_OUTPUT.PUT_LINE('Data de Abertura: ' 
+                             || TO_CHAR(v_os_data_abertura, 'DD-MON-YYYY'));
         DBMS_OUTPUT.PUT_LINE('Tempo Trabalhado: ' || v_tempo_trabalhado || ' horas');
-        DBMS_OUTPUT.PUT_LINE('Salário para esta OS: R$ ' || TO_CHAR(v_salario, '999999.99'));
+        DBMS_OUTPUT.PUT_LINE('Salário para esta OS: R$ ' 
+                             || TO_CHAR(v_salario, '999999.99'));
         DBMS_OUTPUT.PUT_LINE('---');
     END LOOP;
 
@@ -155,9 +154,15 @@ DECLARE
     v_data_abertura date;
     v_data_fim date;
 BEGIN
-    FOR os IN (SELECT ot.fk_id_os, ot.fk_id_tec, ot.dt_fim, ot.dias_trabalhados, os.data_abertura
-           FROM ordem_tec ot
-           JOIN ordem_servico os ON ot.fk_id_os = os.id_os)
+    FOR os IN (
+        SELECT ot.fk_id_os, 
+               ot.fk_id_tec, 
+               ot.dt_fim, 
+               ot.dias_trabalhados, 
+               os.data_abertura
+        FROM ordem_tec ot
+        JOIN ordem_servico os ON ot.fk_id_os = os.id_os
+    )
     LOOP
         BEGIN
             v_os_id := os.fk_id_os;
@@ -167,13 +172,19 @@ BEGIN
             v_data_fim := os.dt_fim;
 
             IF v_data_fim IS NULL THEN
-                DBMS_OUTPUT.PUT_LINE('Ordem de Serviço ID: ' || v_os_id || ' - Técnico ID: ' || v_tec_id);
-                DBMS_OUTPUT.PUT_LINE('Data de Abertura: ' || TO_CHAR(v_data_abertura, 'DD-MON-YYYY'));
-                DBMS_OUTPUT.PUT_LINE('Ainda trabalhando nesta ordem de serviço por ' || v_tempo_trabalhado || ' dias.');
+                DBMS_OUTPUT.PUT_LINE('Ordem de Serviço ID: ' || v_os_id 
+                                     || ' - Técnico ID: ' || v_tec_id);
+                DBMS_OUTPUT.PUT_LINE('Data de Abertura: ' 
+                                     || TO_CHAR(v_data_abertura, 'DD-MON-YYYY'));
+                DBMS_OUTPUT.PUT_LINE('Ainda trabalhando nesta ordem de serviço por ' 
+                                     || v_tempo_trabalhado || ' dias.');
             ELSE
-                DBMS_OUTPUT.PUT_LINE('Ordem de Serviço ID: ' || v_os_id || ' - Técnico ID: ' || v_tec_id);
-                DBMS_OUTPUT.PUT_LINE('Data de Abertura: ' || TO_CHAR(v_data_abertura, 'DD-MON-YYYY'));
-                DBMS_OUTPUT.PUT_LINE('Trabalhado nesta ordem de serviço por ' || v_tempo_trabalhado || ' dias.');
+                DBMS_OUTPUT.PUT_LINE('Ordem de Serviço ID: ' || v_os_id 
+                                     || ' - Técnico ID: ' || v_tec_id);
+                DBMS_OUTPUT.PUT_LINE('Data de Abertura: ' 
+                                     || TO_CHAR(v_data_abertura, 'DD-MON-YYYY'));
+                DBMS_OUTPUT.PUT_LINE('Trabalhado nesta ordem de serviço por ' 
+                                     || v_tempo_trabalhado || ' dias.');
                 DBMS_OUTPUT.PUT_LINE('Concluído em: ' || TO_CHAR(v_data_fim, 'DD-MON-YYYY'));
             END IF;
         EXCEPTION
