@@ -3,27 +3,29 @@ Introdução a linguagem SQL
 DDL - Linguagem de definição de dados - Estrutura
 Criando tabelas
 
-Sintaxe:
-  create table nome_tabela
-  (nome_coluna1 tipo_dados(tamanho) [regra],
-  ......,
-  nome_colunaN tipo_dados(tamanho) [regra]);
+-- Sintaxe:
+    CREATE TABLE nome_tabela (
+        nome_coluna1 tipo_dados(tamanho) [regra],
+        ......,
+        nome_colunaN tipo_dados(tamanho) [regra]
+    );
 
-Tipo de dados: char(n), campo alfanumérico de tamanho fixo
-             varchar(n), campo alfanumérico de tamanho variavel
-             number(x,y), campo numérico inteiro ou real
-             date, campo tipo data
-n = tamanho
-x = parte inteira
-y = parte real, casas decimais
+Tipo de dados:   CHAR(n), campo alfanumérico de tamanho fixo
+                            VARCHAR(n), campo alfanumérico de tamanho variavel
+                            NUMBER(x,y), campo numérico inteiro ou real
+                            DATE, campo tipo data
+                            
+-- Valores numéricos
+n = Tamanho
+x = Parte inteira
+y = Parte real, casas decimais
 
-Regras/Constraints
-Pk - primary key, campo unico, preenchimento obrigatório, relacionamento
-FK - foreign key, relacionamento lado n da cardinalidade, recebe dados
-   previamente cadastrados na Pk
-Nn - not null, campo de preenchimento obrigatorio
-Uk - unique, campo com restriçao a dados repetidos
-Ck - check, campo com lista de dados para validação
+-- Regras/Constraints
+Pk - PRIMARY KEY, campo unico, preenchimento obrigatório, relacionamento
+FK - FOREIGN KEY, relacionamento lado n da cardinalidade, recebe dados previamente cadastrados na Pk
+Nn - NOT NULL, campo de preenchimento obrigatorio
+Uk - UNIQUE, campo com restriçao a dados repetidos
+Ck - CHECK, campo com lista de dados para validação
 
 ------------------------------------
 
@@ -84,9 +86,9 @@ WHERE table_name = 'CARGO';
 
 Criando o Relacionamento
 
-1 - 1 - Pk + FK_Uk
-1 - N - Pk + FK
-N - N - não existe em código sql
+( 1 - 1 ) - Pk + FK_Uk
+( 1 - N ) - Pk + FK
+( N - N ) - Não existe em código sql
 
 ------------------------------------
 
