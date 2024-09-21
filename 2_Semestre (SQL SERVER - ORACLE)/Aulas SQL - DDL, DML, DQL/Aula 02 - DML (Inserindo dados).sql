@@ -1,7 +1,7 @@
--- Aula 02 - DML - Linguagem de Manipulação de Dados
+-- Aula 02 - DML - Linguagem de Manipulaï¿½ï¿½o de Dados
 -- (15-Fev-2023)
 
--- Criação das tabelas: n_fiscal e produto
+-- Criaï¿½ï¿½o das tabelas: n_fiscal e produto
 
 CREATE TABLE n_fiscal (
     n_nf NUMBER(5) PRIMARY KEY,
@@ -30,13 +30,14 @@ CREATE TABLE tem (
 );
 
 ------------------------------------
+
 DML - Inserindo dados
 Comando DML - Data Manipulation Language
 
 -- Sintaxe::
 INSERT INTO nome_tabela VALUES (valor1, valor2,...., valorN);
 
--- Obs: campos: CHAR, VARCHAR ou VARCHAR2 e DATE precisam de apóstrofe
+-- Obs: campos: CHAR, VARCHAR ou VARCHAR2 e DATE precisam de apï¿½strofe
 
 -- Exemplo 1
 -- Conhecendo ou visualizando a estrutura
@@ -47,10 +48,10 @@ DESC n_fiscal;
 INSERT INTO n_fiscal VALUES (1,'10-Jan-00',5000);
 INSERT INTO n_fiscal VALUES (2,'10-Dez-00',5000);
 
--- Verificando a inserção
+-- Verificando a inserï¿½ï¿½o
 SELECT * FROM n_fiscal;
 
--- Descobrindo o padrão da data
+-- Descobrindo o padrï¿½o da data
 SELECT sysdate FROM dual;
 
 -- Gravando dados fisicamente
