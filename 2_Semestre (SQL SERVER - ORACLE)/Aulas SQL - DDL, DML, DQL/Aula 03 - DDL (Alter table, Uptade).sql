@@ -6,7 +6,7 @@
 -- Alterando ou corrigindo uma estrutura
 ALTER TABLE nome_tabela;
 
-OPÇÕES:
+OPï¿½ï¿½ES:
     ADD COLUMN - nova coluna
     ADD CONSTRAINT - nova regra
     MODIFY - modifica tipo e/ou tamanho de uma coluna
@@ -92,15 +92,15 @@ Atualizando dados
 
 UPDATE 
 
-Operadores -  aritméticos: + - * / ()
-                        relacionais: > >= < <= = != ou <>
-                        lógicos: and, or, not
+Operadores -  aritmï¿½ticos: + - * / ()
+            relacionais: > >= < <= = != ou <>
+            lï¿½gicos: and, or, not
  
 -- Sintaxe:       
 UPDATE nome_tabela SET nome_coluna = novo_valor;
 
 UPDATE nome_tabela SET nome_coluna = novo_valor
-WHERE condição;
+WHERE condiï¿½ï¿½o;
 
 ------------------------------------
 
@@ -128,17 +128,17 @@ COMMIT;
 
 SELECT * FROM produto_tb;
 
--- Atualizando os dados do preço do produto para R$1,00
+-- Atualizando os dados do preï¿½o do produto para R$1,00
 UPDATE produto_tb SET val_unit = 1;
 
--- Atualizando os dados do preço do produto para R$1,5
+-- Atualizando os dados do preï¿½o do produto para R$1,5
 -- apenas dos produtos de unidade de medida igual a metro
 UPDATE produto_tb SET val_unit = 1.5
 WHERE unidade = 'M';
 
 SELECT * FROM produto_tb ORDER BY 1;
 
--- Atualizar em 15% o preço dos produtos de código maior que 30.
+-- Atualizar em 15% o preï¿½o dos produtos de cï¿½digo maior que 30.
 UPDATE produto_tb SET val_unit = val_unit * 1.15
 WHERE cod_prod > 30;
 
@@ -146,7 +146,7 @@ WHERE cod_prod > 30;
 UPDATE produto_tb SET descricao = 'Queijo De Minas'
 WHERE descricao = 'Queijo';
 
--- Para os produtos açucar, madeira e Linha zerar o seu preço.
+-- Para os produtos aï¿½ucar, madeira e Linha zerar o seu preï¿½o.
 UPDATE produto_tb SET val_unit = 0
 WHERE descricao = 'Acucar' OR descricao = 'Linha'
 OR descricao = 'Madeira';
