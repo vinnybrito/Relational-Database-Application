@@ -1,5 +1,5 @@
-Aula 02 - DML - Linguagem de Manipulação de Dados
-(15-Fev-2023)
+-- Aula 02 - DML - Linguagem de Manipulação de Dados
+-- (15-Fev-2023)
 
 -- Criação das tabelas: n_fiscal e produto
 
@@ -17,7 +17,7 @@ DESC n_fiscal;
 CREATE TABLE produto (
     cd_pro NUMBER(5) CONSTRAINT prod_cd_pk PRIMARY KEY,
     nm_prod VARCHAR2(30) CONSTRAINT prod_mn_nn NOT NULL
-                            CONSTRAINT prod_nm_uk UNIQUE,
+                    CONSTRAINT prod_nm_uk UNIQUE,
     preco NUMBER(10,2)
 );
 
