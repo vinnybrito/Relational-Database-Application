@@ -1,31 +1,31 @@
-Introdução a linguagem SQL
+Introduï¿½ï¿½o a linguagem SQL
 
-DDL - Linguagem de definição de dados - Estrutura
+DDL - Linguagem de definiï¿½ï¿½o de dados - Estrutura
 Criando tabelas
 
 -- Sintaxe:
-    CREATE TABLE nome_tabela (
-        nome_coluna1 tipo_dados(tamanho) [regra],
-        ......,
-        nome_colunaN tipo_dados(tamanho) [regra]
-    );
+CREATE TABLE nome_tabela (
+    nome_coluna1 tipo_dados(tamanho) [regra],
+    ......,
+    nome_colunaN tipo_dados(tamanho) [regra]
+);
 
-Tipo de dados:   CHAR(n), campo alfanumérico de tamanho fixo
-                            VARCHAR(n), campo alfanumérico de tamanho variavel
-                            NUMBER(x,y), campo numérico inteiro ou real
-                            DATE, campo tipo data
+Tipo de dados:   CHAR(n), campo alfanumï¿½rico de tamanho fixo
+                    VARCHAR(n), campo alfanumï¿½rico de tamanho variavel
+                    NUMBER(x,y), campo numï¿½rico inteiro ou real
+                    DATE, campo tipo data
                             
--- Valores numéricos
+-- Valores numï¿½ricos
 n = Tamanho
 x = Parte inteira
 y = Parte real, casas decimais
 
 -- Regras/Constraints
-Pk - PRIMARY KEY, campo unico, preenchimento obrigatório, relacionamento
+Pk - PRIMARY KEY, campo unico, preenchimento obrigatï¿½rio, relacionamento
 FK - FOREIGN KEY, relacionamento lado n da cardinalidade, recebe dados previamente cadastrados na Pk
 Nn - NOT NULL, campo de preenchimento obrigatorio
-Uk - UNIQUE, campo com restriçao a dados repetidos
-Ck - CHECK, campo com lista de dados para validação
+Uk - UNIQUE, campo com restriï¿½ao a dados repetidos
+Ck - CHECK, campo com lista de dados para validaï¿½ï¿½o
 
 ------------------------------------
 
@@ -49,7 +49,7 @@ DROP TABLE cargo;
 
 ------------------------------------
 
--- 2-) Criando uma tabela com regras, sem personalização:
+-- 2-) Criando uma tabela com regras, sem personalizaï¿½ï¿½o:
 
 CREATE TABLE cargo (
     cd_cargo NUMBER(3) PRIMARY KEY,
@@ -65,7 +65,7 @@ WHERE table_name = 'CARGO';
 
 ------------------------------------
 
--- 3) Criando uma tabela com regras, com personalização:
+-- 3) Criando uma tabela com regras, com personalizaï¿½ï¿½o:
 
 DROP TABLE cargo;
 
@@ -88,7 +88,7 @@ Criando o Relacionamento
 
 ( 1 - 1 ) - Pk + FK_Uk
 ( 1 - N ) - Pk + FK
-( N - N ) - Não existe em código sql
+( N - N ) - Nï¿½o existe em cï¿½digo sql
 
 ------------------------------------
 
