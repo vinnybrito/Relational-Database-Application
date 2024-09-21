@@ -1,7 +1,7 @@
 -- Aula 4 - Finalizando DML
 -- (08-Mar-23)
 
-------------------------------------
+------------------ DELETE ------------------
 
 -- Sintaxe:
 
@@ -9,7 +9,7 @@
 DELETE FROM nome_tabela;
 
 -- Eliminando algumas linha(s)
-DELETE FROM nome_tabela WHERE condição;
+DELETE FROM nome_tabela WHERE condiï¿½ï¿½o;
 
 COMMIT;
 
@@ -30,4 +30,4 @@ COMMIT;
 -- Desfazendo DML:
 ROLLBACK
 
--- Atenção: uma vez executado o commit, o rollback não funciona
+-- Atenï¿½ï¿½o: uma vez executado o commit, o rollback nï¿½o funciona
