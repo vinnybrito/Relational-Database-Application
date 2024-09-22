@@ -1,19 +1,19 @@
-Aula 05 - CHECKPOINT #1
-(04/09/2023)
+-- Aula 05 - CHECKPOINT #1
+-- (04/09/2023)
 
 --------------------------
 
-EXERCÍCIO 1 - 4 PONTOS
+-- EXERCÍCIO 1 - 4 PONTOS
 
-1º) Suponha que você está programando um módulo contador de cédulas para
-caixas eletrônicos. Escreva um programa que informa com quantas cédulas 
-de Real podemos representar um dado valor. 
+-- 1º) Suponha que você está programando um módulo contador de cédulas para
+-- caixas eletrônicos. Escreva um programa que informa com quantas cédulas 
+-- de Real podemos representar um dado valor. 
 
-EXEMPLO DE RESPOSTA: R$ 218 = 2 cédulas de 100, 1 cédula de 10, 1 cédula de 5,
-1 cédula de 2 e 1 cédula de 1. 
+-- EXEMPLO DE RESPOSTA: R$ 218 = 2 cédulas de 100, 1 cédula de 10, 1 cédula de 5,
+-- 1 cédula de 2 e 1 cédula de 1. 
 
-Procure minimizar o número de cédulas usadas. Desconsidere valores com
-centavos, e suponha que a máquina sempre tem disponíveis as cédulas necessárias.
+-- Procure minimizar o número de cédulas usadas. Desconsidere valores com
+-- centavos, e suponha que a máquina sempre tem disponíveis as cédulas necessárias.
 
 SET SERVEROUTPUT ON
 DECLARE
@@ -79,18 +79,18 @@ END;
 
 --------------------------
 
-EXERCÍCIO 2 - 6 PONTOS
+-- EXERCÍCIO 2 - 6 PONTOS
 
-2º) Zeca está organizando um bolão de futebol. Segundo suas regras, os apostadores informam o
-placar do jogo e ganham 10 pontos se acertarem o vencedor ou se acertarem que foi empate, e 
-ganham mais 5 pontos para o placar de cada time que acertarem. A tabela a seguir dá um exemplo,
-considerando que o placar real foi 3x2:
+-- 2º) Zeca está organizando um bolão de futebol. Segundo suas regras, os apostadores informam o
+-- placar do jogo e ganham 10 pontos se acertarem o vencedor ou se acertarem que foi empate, e 
+-- ganham mais 5 pontos para o placar de cada time que acertarem. A tabela a seguir dá um exemplo,
+-- considerando que o placar real foi 3x2:
 
-Criar a tabela apostador e inserir os dados da tabela
+-- Criar a tabela apostador e inserir os dados da tabela
 
-Criar um bloco que calcula a pontuação dos apostadores, entrada de dados:
-Placar do jogo e código do apostador, atualizar a coluna pontos da tabela
-apostador via bloco de programação.
+-- Criar um bloco que calcula a pontuação dos apostadores, entrada de dados:
+-- Placar do jogo e código do apostador, atualizar a coluna pontos da tabela
+-- apostador via bloco de programação.
 
 DROP TABLE apostador;
 
@@ -148,4 +148,3 @@ BEGIN
 END;
 
 SELECT * FROM apostador;
-

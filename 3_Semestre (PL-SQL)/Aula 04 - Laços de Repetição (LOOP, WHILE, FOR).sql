@@ -1,5 +1,5 @@
-Aula 04 - Laços de Repetição (LOOP, WHILE, FOR)
-(28/08/2023)
+-- Aula 04 - Laços de Repetição (LOOP, WHILE, FOR)
+-- (28/08/2023)
 
 ----------------------------------------------------
 
@@ -58,11 +58,11 @@ END;
 
 ----------------------------------------------------
 
-EXERCÍCIOS
+-- EXERCÍCIOS
 
-1º) Montar um bloco de programação que realize o
-processamento de uma tabuada qualquer, por
-exemplo a tabuada do número 5.
+-- 1º) Montar um bloco de programação que realize o
+-- processamento de uma tabuada qualquer, por
+-- exemplo a tabuada do número 5.
 
 -----( LOOP )-----
 
@@ -108,8 +108,8 @@ END;
 
 --------------------------
 
-2º) Em um intervalo numérico inteiro, informar
-quantos números são pares e quantos são ímpares.
+-- 2º) Em um intervalo numérico inteiro, informar
+-- quantos números são pares e quantos são ímpares.
 
 SET SERVEROUTPUT ON
 DECLARE
@@ -133,9 +133,8 @@ END;
 
 --------------------------
 
-
-3º) Exibir e média dos valores pares em um intervalo
-numérico e soma dos ímpares.
+-- 3º) Exibir e média dos valores pares em um intervalo
+-- numérico e soma dos ímpares.
 
 SET SERVEROUTPUT ON
 DECLARE
@@ -165,4 +164,3 @@ BEGIN
     DBMS_OUTPUT.PUT_LINE('Soma dos valores ímpares: ' || v_soma_impar);
 END;
 /
-
