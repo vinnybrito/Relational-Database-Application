@@ -1,70 +1,11 @@
--- Atividade 02 - Gestão de Empregados e Empresas
--- (22-Mar-2023)
-
--- Gabarito dos Exercícios 02 & 03
-
------------------- Atividade 02 ------------------
-
--- 1) Crie a seguinte tabela a partir da relação abaixo:
-CREATE TABLE Empregado (
-    nome_empregado VARCHAR(50) NOT NULL,
-    rua VARCHAR(100) NOT NULL,
-    cidade VARCHAR(30),
-    estado_civil VARCHAR(15)
-);
-
--- 2) Altere a Tabela Empregado adicionando o atributo Salario numérico com 9 inteiros e 2 decimais
-ALTER TABLE Empregado ADD salario NUMBER(9,2);
-
--- 3) Altere a Tabela Empregado adicionando o atributo data nascimento como data
-ALTER TABLE Empregado ADD data_nascimento DATE;
-
--- 4) Altere a Tabela Empregado modificando o tamanho do atributo Cidade para 110.
-ALTER TABLE Empregado MODIFY cidade VARCHAR(110);
-
--- 5) Crie a seguinte tabela a partir da relação abaixo
-CREATE TABLE Companhia (
-    nome_companhia VARCHAR(50) PRIMARY KEY,
-    cidade VARCHAR(30)
-);
-
--- 6) Altere a Tabela Empregado adicionando Nome_Empregado como chave primária.
-ALTER TABLE Empregado ADD PRIMARY KEY (nome_empregado);
-
--- 7) Crie a seguinte tabela a partir da relação. Não esqueça de definir as chaves estrangeiras
-CREATE TABLE Trabalha (
-    nome_empregado VARCHAR(50),
-    nome_companhia VARCHAR(50) NOT NULL,
-    salario NUMBER(9,2) NOT NULL,
-    PRIMARY KEY (nome_empregado, nome_companhia),
-    FOREIGN KEY (nome_empregado) REFERENCES Empregado (nome_empregado),
-    FOREIGN KEY (nome_companhia) REFERENCES Companhia (nome_companhia)
-);
-
--- 8) Crie a seguinte tabela a partir da relação.
-CREATE TABLE Gerente (
-    nome_empregado VARCHAR(50),
-    nome_gerente VARCHAR(50),
-    FOREIGN KEY (nome_empregado) REFERENCES Empregado (nome_empregado),
-    FOREIGN KEY (nome_gerente) REFERENCES Empregado (nome_empregado)
-);
-
--- 9) Delete as tabelas.
-DROP TABLE Empregado CASCADE CONSTRAINTS;
-DROP TABLE Companhia CASCADE CONSTRAINTS;
-DROP TABLE Trabalha CASCADE CONSTRAINTS;
-DROP TABLE Gerente CASCADE CONSTRAINTS;
-
--- Atividade 03 - Locadora
-
------------------- Atividade 03 ------------------
+-- Atividade 03 - Locadora de Videos
 
 -----------------------------------------
 		TAREFA 01
 -----------------------------------------
 
--- 1) Criar todas as tabelas, de acordo com o modelo relacional/lógico,
--- definindo todas as restrições mencionadas no modelo;
+-- 1) Criar todas as tabelas, de acordo com o modelo relacional/lï¿½gico,
+-- definindo todas as restriï¿½ï¿½es mencionadas no modelo;
 
 SELECT table_name FROM user_tables; -- Utilizado para visualizar todas as tabelas;
 
@@ -126,10 +67,10 @@ CREATE TABLE Estrela (
 -----------------------------------------
 
 -- 2-) Insira todos os valores apresentados nas tabelas FILME, CLIENTE, DVD e CATEGORIA.
--- (Utilize vários insert's).
+-- (Utilize vï¿½rios insert's).
 
 -- Tabela Categoria
-INSERT INTO Categoria VALUES (1, 'Comédia');
+INSERT INTO Categoria VALUES (1, 'Comï¿½dia');
 INSERT INTO Categoria VALUES (2, 'Drama');
 INSERT INTO Categoria VALUES (3, 'Aventura');
 INSERT INTO Categoria VALUES (4, 'Terror');
@@ -138,10 +79,10 @@ COMMIT;
 SELECT * FROM Categoria;
 
 -- Tabela Filme
-INSERT INTO Filme VALUES (1, 'Sai pra lá', 1);
+INSERT INTO Filme VALUES (1, 'Sai pra lï¿½', 1);
 INSERT INTO Filme VALUES (2, 'Ajuda Eterna', 2);
 INSERT INTO Filme VALUES (3, 'Anjos Malditos', 2);
-INSERT INTO Filme VALUES (4, 'Pânico II', 4);
+INSERT INTO Filme VALUES (4, 'Pï¿½nico II', 4);
 INSERT INTO Filme VALUES (5, 'Um dia de furia', 3);
 INSERT INTO Filme VALUES (6, 'Lente Cega', 3);
 INSERT INTO Filme VALUES (7, 'Sinais do Tempo', 2);
@@ -162,9 +103,9 @@ SELECT * FROM DVD;
 
 -- Tabela Cliente
 INSERT INTO Cliente VALUES
-    (1, 'João', 'Silva', 'Rua da Cruz sem Pé', '4444-1111');
+    (1, 'Joï¿½o', 'Silva', 'Rua da Cruz sem Pï¿½', '4444-1111');
 INSERT INTO Cliente VALUES
-    (2, 'Antônio', 'Ferreira', 'Av. da Vila Velha', '6660-9333');
+    (2, 'Antï¿½nio', 'Ferreira', 'Av. da Vila Velha', '6660-9333');
 INSERT INTO Cliente VALUES
     (3, 'Fabio', 'Dias', 'Rua Antonio Vieira', '2337-0393');
 INSERT INTO Cliente VALUES
@@ -221,10 +162,10 @@ SELECT * FROM Estrela;
 		TAREFA 03
 -----------------------------------------
 
--- 3-) Altere o número da categoria Cómedia de 01 para 08 na tabela Categoria.
+-- 3-) Altere o nï¿½mero da categoria Cï¿½media de 01 para 08 na tabela Categoria.
 
--- ( Esta alteração não pode ser realizada diretamente na PRIMARY KEY, 
---   pois existem dados na FOREIGN KEY que são os mesmos da PK. )
+-- ( Esta alteraï¿½ï¿½o nï¿½o pode ser realizada diretamente na PRIMARY KEY, 
+--   pois existem dados na FOREIGN KEY que sï¿½o os mesmos da PK. )
 
 -- Passo 1: Realizar a troca dos dados da fk para null;
 
@@ -238,7 +179,7 @@ WHERE Codcateg = 1;
 SELECT * FROM Categoria;
 
 UPDATE Categoria SET Codcateg = 8
-WHERE Codcateg = 1 AND Descricao = 'Comédia';
+WHERE Codcateg = 1 AND Descricao = 'Comï¿½dia';
 
 -- Passo 3: Atualiza as fks nulas para 8;
 
@@ -262,18 +203,18 @@ ALTER TABLE Filme ADD Sinopse VARCHAR(300);
 		TAREFA 05
 -----------------------------------------
 
--- 5-) Cadastre uma nova categoria de filme chamada FICÇÃO.
+-- 5-) Cadastre uma nova categoria de filme chamada FICï¿½ï¿½O.
 
 SELECT * FROM Categoria;
 
-INSERT INTO Categoria VALUES (5, 'Ficção');
+INSERT INTO Categoria VALUES (5, 'Ficï¿½ï¿½o');
 
 -----------------------------------------
 		TAREFA 06
 -----------------------------------------
 
 -- 6-) Apague o filme chamado "Anjos Malditos" e a "A melodia da Vida" da tabela Filme.
--- Para isso, utilize um único comando.
+-- Para isso, utilize um ï¿½nico comando.
 
 SELECT * FROM Filme;
 SELECT * FROM DVD;
