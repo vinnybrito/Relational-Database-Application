@@ -1,23 +1,23 @@
 -- Aula 09 - Operadores (Between, In, Like)
 -- (19-Abr-2023)
 
--- 5.5) Crie um relatório que exiba o código do cliente e seu nome, desde que
--- estejam no intervalo de código com início em 180 até 720 (inclusive)
+-- 5.5) Crie um relatï¿½rio que exiba o cï¿½digo do cliente e seu nome, desde que
+-- estejam no intervalo de cï¿½digo com inï¿½cio em 180 atï¿½ 720 (inclusive)
 SELECT cod_clie, nome_clie FROM cliente WHERE cod_clie >= 180 
 AND cod_clie <= 720 ORDER BY 1;
 
--- 5.6) Crie um relatório que exiba o código do cliente e seu nome, desde que
--- estejam no intervalo de código com início em 180 até 720
+-- 5.6) Crie um relatï¿½rio que exiba o cï¿½digo do cliente e seu nome, desde que
+-- estejam no intervalo de cï¿½digo com inï¿½cio em 180 atï¿½ 720
 SELECT cod_clie, nome_clie FROM cliente WHERE cod_clie > 180 
 AND cod_clie < 720 ORDER BY 1;
 
--- 5.7) Crie um relatório que exiba o nome do cliente, desde que
--- estejam no intervalo de B até F (inclusive)
+-- 5.7) Crie um relatï¿½rio que exiba o nome do cliente, desde que
+-- estejam no intervalo de B atï¿½ F (inclusive)
 SELECT nome_clie FROM cliente WHERE UPPER(nome_clie) >= 'B' 
 AND UPPER(nome_clie) <= 'G' ORDER BY 1;
 
--- 5.8) Quem são os vendedores com salário superior a R$2.000,00, que pertençam a 
--- comissão A ou C e que seu código esteja no intervalo de 500 até 800
+-- 5.8) Quem sï¿½o os vendedores com salï¿½rio superior a R$2.000,00, que pertenï¿½am a 
+-- comissï¿½o A ou C e que seu cï¿½digo esteja no intervalo de 500 atï¿½ 800
 
 SELECT * FROM vendedor 
 WHERE salario_fixo > 2000;
@@ -77,9 +77,9 @@ BETWEEN (intervalo sequencial) -> coluna1 BETWEEN valor inicial AND valor final
 
 --------------------- LIKE ---------------------
         
-LIKE - Igual a posição ou igual a posições - > coluna LIKE 'opção'
-% = qualquer quantidade, qualquer posição
-_ = posição e quantidade especifica
+LIKE - Igual a posiï¿½ï¿½o ou igual a posiï¿½ï¿½es - > coluna LIKE 'opï¿½ï¿½o'
+% = qualquer quantidade, qualquer posiï¿½ï¿½o
+_ = posiï¿½ï¿½o e quantidade especifica
 
 
 -- Nomes que tenham a letra 'a'
@@ -90,11 +90,11 @@ WHERE UPPER(nome_clie) LIKE '%A%';
 SELECT nome_clie FROM cliente 
 WHERE UPPER(nome_clie) LIKE '%O%';
 
--- Nomes que não iniciam com 'M' e 'R'
+-- Nomes que nï¿½o iniciam com 'M' e 'R'
 SELECT nome_clie FROM cliente 
 WHERE UPPER(nome_clie) NOT LIKE 'M%' AND UPPER(nome_clie) NOT LIKE 'R%';
 
--- Nomes que a penúltima letra é a letra 'i'
+-- Nomes que a penï¿½ltima letra ï¿½ a letra 'i'
 SELECT nome_clie FROM cliente 
 WHERE UPPER(nome_clie) LIKE '%I_';
 
@@ -105,4 +105,3 @@ WHERE UPPER(nome_clie) LIKE '%A%' AND UPPER(nome_clie) NOT LIKE '%S%';
 -- Nomes com as letras 'a' e 's'
 SELECT nome_clie FROM cliente 
 WHERE UPPER(nome_clie) LIKE '%A%' AND UPPER(nome_clie) LIKE '%S%';
-

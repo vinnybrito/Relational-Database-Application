@@ -1,4 +1,4 @@
--- Atividade 04 - Gestão de vendas e logística
+-- Atividade 04 - Gestï¿½o de vendas e logï¿½stica
 -- (05-Abr-2023)
 
 DROP TABLE Cliente CASCADE CONSTRAINTS;
@@ -51,34 +51,34 @@ CREATE TABLE Item_Pedido (
 -- Inserindo valores na tabela
 
 -- Tabela Cliente
-INSERT INTO Cliente VALUES (720, 'Ana', 'Rua 17 n.19', 'Niterói', '24358310', 'RJ', '12113231/0001-34', '2134');
-INSERT INTO Cliente VALUES (870, 'Flávio', 'Av. Pres. Vargas, 10', 'São Paulo', '22763931', 'SP', '22534126/9387-9', '4631');
-INSERT INTO Cliente VALUES (110, 'Jorge', 'Rua Caiapó, 13', 'Curitiba', '30078500', 'PR', '14512764/9834-9', NULL);
-INSERT INTO Cliente VALUES (222, 'Lúcia', 'Rua Itabira, 123', 'Belo Horizonte', '22124391', 'MG', '283152123/9348-8', '2985');
-INSERT INTO Cliente VALUES (830, 'Mauricio', 'Av. Paulista, 1236', 'São Paulo', '3012683', 'SP', '32816985/7465-6', '9343');
+INSERT INTO Cliente VALUES (720, 'Ana', 'Rua 17 n.19', 'Niterï¿½i', '24358310', 'RJ', '12113231/0001-34', '2134');
+INSERT INTO Cliente VALUES (870, 'Flï¿½vio', 'Av. Pres. Vargas, 10', 'Sï¿½o Paulo', '22763931', 'SP', '22534126/9387-9', '4631');
+INSERT INTO Cliente VALUES (110, 'Jorge', 'Rua Caiapï¿½, 13', 'Curitiba', '30078500', 'PR', '14512764/9834-9', NULL);
+INSERT INTO Cliente VALUES (222, 'Lï¿½cia', 'Rua Itabira, 123', 'Belo Horizonte', '22124391', 'MG', '283152123/9348-8', '2985');
+INSERT INTO Cliente VALUES (830, 'Mauricio', 'Av. Paulista, 1236', 'Sï¿½o Paulo', '3012683', 'SP', '32816985/7465-6', '9343');
 INSERT INTO Cliente VALUES (130, 'Edmar', 'Rua da Praia, s/n', 'Salvador', '30079300', 'BA', '23463284/234-9', '7121');
 INSERT INTO Cliente VALUES (410, 'Rodolfo', 'Largo da Lapa, 27', 'Rio de Janeiro', '30078900', 'RJ', '12835128/2346-9', '7431');
-INSERT INTO Cliente VALUES (20, 'Beth', 'Av. Climério, 45', 'São Paulo', '25679300', 'SP', '32485126/7326-8', '9280');
+INSERT INTO Cliente VALUES (20, 'Beth', 'Av. Climï¿½rio, 45', 'Sï¿½o Paulo', '25679300', 'SP', '32485126/7326-8', '9280');
 INSERT INTO Cliente VALUES (157, 'Paulo', 'Trav. Moraes, casa 3', 'Londrina', NULL, 'PR', '32848223/324-2', '1923');
-INSERT INTO Cliente VALUES (180, 'Lívio', 'Av. Beira Mar, 1256', 'Florianópolis', '30077500', 'SC', '12736571/2347-4', '1111');
-INSERT INTO Cliente VALUES (260, 'Susana', 'Rua Lopes Mandes, 12', 'Niterói', '30046500', 'RJ', '21763571/232-9', '2530');
-INSERT INTO Cliente VALUES (290, 'Renato', 'Rua Meireles, 123', 'São Paulo', '30225900', 'SP', '13276571/1231-4', '1820');
-INSERT INTO Cliente VALUES (390, 'Sebastião', 'Rua da Igreja, 10', 'Uberaba', '30438700', 'MG', '32176547/213-3', '9071');
-INSERT INTO Cliente VALUES (234, 'José', 'Quadra 3, Bl. 3, sl. 1003', 'Brasília', '22841650', 'DF', '21763576/1232-3', '2931');
+INSERT INTO Cliente VALUES (180, 'Lï¿½vio', 'Av. Beira Mar, 1256', 'Florianï¿½polis', '30077500', 'SC', '12736571/2347-4', '1111');
+INSERT INTO Cliente VALUES (260, 'Susana', 'Rua Lopes Mandes, 12', 'Niterï¿½i', '30046500', 'RJ', '21763571/232-9', '2530');
+INSERT INTO Cliente VALUES (290, 'Renato', 'Rua Meireles, 123', 'Sï¿½o Paulo', '30225900', 'SP', '13276571/1231-4', '1820');
+INSERT INTO Cliente VALUES (390, 'Sebastiï¿½o', 'Rua da Igreja, 10', 'Uberaba', '30438700', 'MG', '32176547/213-3', '9071');
+INSERT INTO Cliente VALUES (234, 'Josï¿½', 'Quadra 3, Bl. 3, sl. 1003', 'Brasï¿½lia', '22841650', 'DF', '21763576/1232-3', '2931');
 COMMIT;
 
 SELECT * FROM Cliente;
 
 -- Tabela Vendedor
-INSERT INTO Vendedor VALUES (209, 'José', 1800, 'C');
+INSERT INTO Vendedor VALUES (209, 'Josï¿½', 1800, 'C');
 INSERT INTO Vendedor VALUES (111, 'Carlos', 2490, 'A');
-INSERT INTO Vendedor VALUES (11, 'João', 2780, 'C');
-INSERT INTO Vendedor VALUES (240, 'Antônio', 9500, 'C');
+INSERT INTO Vendedor VALUES (11, 'Joï¿½o', 2780, 'C');
+INSERT INTO Vendedor VALUES (240, 'Antï¿½nio', 9500, 'C');
 INSERT INTO Vendedor VALUES (720, 'Felipe', 4600, 'A');
 INSERT INTO Vendedor VALUES (213, 'Jonas', 2300, 'A');
-INSERT INTO Vendedor VALUES (101, 'João', 2650, 'C');
+INSERT INTO Vendedor VALUES (101, 'Joï¿½o', 2650, 'C');
 INSERT INTO Vendedor VALUES (310, 'Josias', 870, 'B');
-INSERT INTO Vendedor VALUES (250, 'Maurício', 2930, 'B');
+INSERT INTO Vendedor VALUES (250, 'Maurï¿½cio', 2930, 'B');
 COMMIT;
 
 SELECT * FROM Vendedor;
@@ -88,7 +88,7 @@ INSERT INTO Produto VALUES (25, 'KG', 'Queijo', 0.97);
 INSERT INTO Produto VALUES (31, 'BAR', 'Chocolate', 0.87);
 INSERT INTO Produto VALUES (78, 'L', 'Vinho', 2.00);
 INSERT INTO Produto VALUES (22, 'M', 'Linho', 0.11);
-INSERT INTO Produto VALUES (30, 'SAC', 'Açúcar', 0.30);
+INSERT INTO Produto VALUES (30, 'SAC', 'Aï¿½ï¿½car', 0.30);
 INSERT INTO Produto VALUES (53, 'M', 'Linha', 1.80);
 INSERT INTO Produto VALUES (13, 'G', 'Ouro', 6.18);
 INSERT INTO Produto VALUES (45, 'M', 'Madeira', 0.25);
@@ -142,23 +142,3 @@ INSERT INTO Item_Pedido VALUES (143, 78, 10);
 COMMIT;
 
 SELECT * FROM Item_Pedido;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
