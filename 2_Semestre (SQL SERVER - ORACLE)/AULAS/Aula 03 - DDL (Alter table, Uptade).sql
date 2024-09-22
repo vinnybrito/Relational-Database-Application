@@ -92,9 +92,9 @@ Atualizando dados
 
 UPDATE 
 
-Operadores -  aritm�ticos: + - * / ()
-            relacionais: > >= < <= = != ou <>
-            l�gicos: and, or, not
+Operadores - aritm�ticos: + - * / ()
+             relacionais: > >= < <= = != ou <>
+             l�gicos: and, or, not
  
 -- Sintaxe:       
 UPDATE nome_tabela SET nome_coluna = novo_valor;

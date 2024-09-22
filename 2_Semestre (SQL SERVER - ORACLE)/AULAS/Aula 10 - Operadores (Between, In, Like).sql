@@ -42,8 +42,8 @@ OPERADORES DE BANCO DE DADOS: (BETWEEN, IN, LIKE)
 ------------------- BETWEEN -------------------
 
 BETWEEN (intervalo sequencial) -> coluna1 BETWEEN valor inicial AND valor final
--- Exemplo:
 
+-- Exemplo:
 -- Usando operador tradicional: 	
                     SELECT cod_clie, nome_clie FROM cliente
                     WHERE cod_clie >= 180 AND cod_clie <= 720 ORDER BY 1;
@@ -54,7 +54,6 @@ BETWEEN (intervalo sequencial) -> coluna1 BETWEEN valor inicial AND valor final
 
 -- Usando o operador NOT: 
 -- coluna1 not between valor inicial and valor final
-
                     SELECT cod_clie, nome_clie FROM cliente
                     WHERE cod_clie NOT BETWEEN 180 AND 720 ORDER BY 1;
 

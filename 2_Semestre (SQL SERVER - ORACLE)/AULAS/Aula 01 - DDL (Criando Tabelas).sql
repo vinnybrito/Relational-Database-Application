@@ -11,9 +11,9 @@ CREATE TABLE nome_tabela (
 );
 
 Tipo de dados:   CHAR(n), campo alfanum�rico de tamanho fixo
-                    VARCHAR(n), campo alfanum�rico de tamanho variavel
-                    NUMBER(x,y), campo num�rico inteiro ou real
-                    DATE, campo tipo data
+                 VARCHAR(n), campo alfanum�rico de tamanho variavel
+                 NUMBER(x,y), campo num�rico inteiro ou real
+                 DATE, campo tipo data
                             
 -- Valores num�ricos
 n = Tamanho
