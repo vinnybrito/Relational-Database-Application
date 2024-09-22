@@ -11,7 +11,7 @@ SET SERVEROUTPUT ON
 -- 1º Programa
 
 BEGIN
-    DBMS_OUTPUT.PUT_LINE('Bloco Ok!!!!');
+    DBMS_OUTPUT.PUT_LINE('Bloco Ok!!!');
 END;
 
 --------------------------

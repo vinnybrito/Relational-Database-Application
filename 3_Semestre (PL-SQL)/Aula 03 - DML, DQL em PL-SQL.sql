@@ -1,5 +1,5 @@
-Aula 03 - Instruções DML, DQL em blocos PL/SQL
-(21/08/2023)
+-- Aula 03 - Instruções DML, DQL em blocos PL/SQL
+-- (21/08/2023)
 
 -- CHECKPOINT #1 - (04/09) - Individual ou em dupla
 
@@ -73,12 +73,11 @@ BEGIN
     DELETE FROM aluno WHERE ra = v_ra;
 END;
 
-
 -------------------------------------
 
-EXERCÍCIO
+-- EXERCÍCIO
 
-1º) Criar tabela produto e inserir dados.
+-- 1º) Criar tabela produto e inserir dados.
 
 DROP TABLE produto CASCADE CONSTRAINTS;
 
@@ -98,10 +97,10 @@ END;
 
 ------------------
 
-1.1º) Criar um bloco PL/SQL para que o usuário possa selecionar
-a quantidade de produtos que ele deseja, atravez do seu ID. Ao
-selecionar a quantidade o programa deve atualizar na tabela o 
-novo valor da quantidade e exibir na tela o resultado.
+-- 1.1º) Criar um bloco PL/SQL para que o usuário possa selecionar
+-- a quantidade de produtos que ele deseja, atravez do seu ID. Ao
+-- selecionar a quantidade o programa deve atualizar na tabela o 
+-- novo valor da quantidade e exibir na tela o resultado.
 
 SET SERVEROUTPUT ON
 DECLARE
@@ -131,8 +130,7 @@ END;
 
 ------------------
 
-Escolher se vai ser feita a compra ou a venda do produto
-
+-- Escolher se vai ser feita a compra ou a venda do produto
 
 SET SERVEROUTPUT ON
 DECLARE
@@ -165,8 +163,5 @@ BEGIN
     ELSE
 	DBMS_OUTPUT.PUT_LINE('Opção Invalida');
     END IF;
-
 END;
 /
-
-

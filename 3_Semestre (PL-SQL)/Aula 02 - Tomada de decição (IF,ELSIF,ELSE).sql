@@ -1,15 +1,15 @@
-Aula 02 - Tomada de decição (IF, ELSIF, ELSE) 
-(14/08/2023)
+-- Aula 02 - Tomada de decição (IF, ELSIF, ELSE) 
+-- (14/08/2023)
 
 --------------------------
 
-EXERCÍCIOS
+-- EXERCÍCIOS
 
-1º) Criar um bloco PL/SQL para analisar a entrada de dados do 
-sexo de um cliente. O bloco deverá receber o dado sobre o
-sexo: para masculino - M ou m, para feminino -F ou f. 
-Qualquer dado fora desta configuração deverá ser exibido 
-'Outros', para M ou m 'Masculino', para F ou f 'Feminino'.
+-- 1º) Criar um bloco PL/SQL para analisar a entrada de dados do 
+-- sexo de um cliente. O bloco deverá receber o dado sobre o
+-- sexo: para masculino - M ou m, para feminino -F ou f. 
+-- Qualquer dado fora desta configuração deverá ser exibido 
+-- 'Outros', para M ou m 'Masculino', para F ou f 'Feminino'.
 
 SET SERVEROUTPUT ON
 DECLARE
@@ -25,11 +25,10 @@ BEGIN
 END;
 /
 
-------------Ex2-------------
+------------ Ex2 -------------
 
-2º) Refaça o exercício 5 da aula anterior. Dessa vez, 
-utilize as estruturas de decisão (IF, ELSIF, ELSE)
-
+-- 2º) Refaça o exercício 5 da aula anterior. Dessa vez, 
+-- utilize as estruturas de decisão (IF, ELSIF, ELSE)
 
 SET SERVEROUTPUT ON
 DECLARE
@@ -52,10 +51,10 @@ BEGIN
 END;
 /
 
-------------Ex3-------------
+------------ Ex3 -------------
 
-3º) Criar um bloco PL/SQL para calcular a média da fiap.
-Entrada das notas via teclado.
+-- 3º) Criar um bloco PL/SQL para calcular a média da fiap.
+-- Entrada das notas via teclado.
 
 SET SERVEROUTPUT ON
 DECLARE
@@ -76,4 +75,3 @@ BEGIN
     END IF;
 END;
 /
-
