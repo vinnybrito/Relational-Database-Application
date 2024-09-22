@@ -1,7 +1,7 @@
--- Aula 12 - Funções Numéricas e Agrupamento
+-- Aula 12 - Funï¿½ï¿½es Numï¿½ricas e Agrupamento
 -- (03-Mai-2023)
 
--- Funções Numéricas Simples:
+-- Funï¿½ï¿½es Numï¿½ricas Simples:
 -- COUNT, SUM, AVG, ROUND, TRUNC, MAX, MIN;
 
 -- Tabelas da Atividade 04
@@ -26,7 +26,7 @@ SELECT COUNT(cod_clie), COUNT(cep) FROM cliente;
 
 ----------------- SUM -----------------
 
--- Somatória de valores em colunas
+-- Somatï¿½ria de valores em colunas
 -- Exemplo: SUM(coluna);
 
 -- Qual o custo da folha de pagamento?
@@ -34,15 +34,15 @@ SELECT SUM(salario_fixo) FROM vendedor;
 
 ----------------- AVG -----------------
 
--- Cálculo da média dos valores em colunas
+-- Cï¿½lculo da mï¿½dia dos valores em colunas
 -- Exemplo: AVG(coluna);
 
--- Qual a média salarial dos vendedores?
+-- Qual a mï¿½dia salarial dos vendedores?
 SELECT ROUND(AVG(salario_fixo),2) FROM vendedor;
 
 ------------ ROUND & TRUNC ------------
 
-ROUND - Arredondamento, 1º posição após limite >= 5, + 1 a esquerda;
+ROUND - Arredondamento, 1ï¿½ posiï¿½ï¿½o apï¿½s limite >= 5, + 1 a esquerda;
 TRUNC - Despreza casas decimais, sem arredondamento;
 
 SELECT salario_fixo/1.3, ROUND(salario_fixo/1.3,2),
@@ -53,7 +53,7 @@ TRUNC(salario_fixo/1.3,2) FROM vendedor;
 -- Maior valor na coluna
 -- Exemplo: MAX(coluna);
 
--- Qual o maior salário cadastrado na tabela vendedor?
+-- Qual o maior salï¿½rio cadastrado na tabela vendedor?
 
 SELECT MAX(salario_fixo) FROM vendedor;
 
@@ -65,7 +65,7 @@ SELECT MAX(nome_clie) FROM cliente;
 -- Menor valor na coluna
 -- Exemplo: MIN(coluna);
 
--- Qual o menor salário cadastrado na tabela vendedor?
+-- Qual o menor salï¿½rio cadastrado na tabela vendedor?
 SELECT MIN(salario_fixo) FROM vendedor;
 SELECT salario_fixo FROM vendedor ORDER BY 1;
 
@@ -73,66 +73,66 @@ SELECT salario_fixo FROM vendedor ORDER BY 1;
 -- EXEMPLOS
 ---------------------------
 
--- Crie um relatório que mostre o maior e o menor preço existente na tabela produto
-SELECT MAX(val_unit) "Maior Preço", MIN(val_unit) "Menor Preço" FROM produto;
+-- Crie um relatï¿½rio que mostre o maior e o menor preï¿½o existente na tabela produto
+SELECT MAX(val_unit) "Maior Preï¿½o", MIN(val_unit) "Menor Preï¿½o" FROM produto;
 
--- Crie um relatório que mostre quantos clientes moram em São Paulo.
+-- Crie um relatï¿½rio que mostre quantos clientes moram em Sï¿½o Paulo.
 SELECT COUNT(cod_clie) "Total de clientes em SP" FROM cliente 
 WHERE uf = 'SP';
 
 SELECT uf FROM cliente 
 WHERE uf = 'SP';
 
--- Crie um relatório que exiba a quantidade de pedidos do cliente 720.
+-- Crie um relatï¿½rio que exiba a quantidade de pedidos do cliente 720.
 SELECT COUNT(num_pedido) "Total de pedidos" FROM pedido
 WHERE cod_clie = 720;
 
--- Qual a média salarial dos vendedore de comissão A?
+-- Qual a mï¿½dia salarial dos vendedore de comissï¿½o A?
 SELECT AVG(salario_fixo) FROM vendedor 
 WHERE comissao = 'A';
 
--- Qual é o custo da folha de pagamento dos vendedores de comissão C?
+-- Qual ï¿½ o custo da folha de pagamento dos vendedores de comissï¿½o C?
 SELECT SUM(salario_fixo) FROM vendedor 
 WHERE comissao = 'C';
 
--- Exiba o nome e salário do vendedor que tem o maior salário cadastrado na tabela
+-- Exiba o nome e salï¿½rio do vendedor que tem o maior salï¿½rio cadastrado na tabela
 -- vendedor.
 SELECT nome_ven, MAX(salario_fixo) FROM vendedor;
 
 ---------------------------
--- Solução em duas partes
+-- Soluï¿½ï¿½o em duas partes
 ---------------------------
 
--- 1) Seleção que exibe a saída de dados
+-- 1) Seleï¿½ï¿½o que exibe a saï¿½da de dados
 SELECT nome_ven, salario_fixo FROM vendedor;
 
--- 2) Filtro de exibição
+-- 2) Filtro de exibiï¿½ï¿½o
 SELECT MAX(salario_fixo) FROM vendedor;
 
--- 3) Juntar as instruções
+-- 3) Juntar as instruï¿½ï¿½es
 SELECT nome_ven, salario_fixo FROM vendedor
 WHERE salario_fixo IN (SELECT MAX(salario_fixo) FROM vendedor);
 
--- Exiba o nome do vendedor e seu salário, desde que ele ganhe acima da média.
-    -- A) Seleção que exibe a saída de dados;
-    -- B) Filtro de exibição;
-    -- C) Juntar as instruções;
+-- Exiba o nome do vendedor e seu salï¿½rio, desde que ele ganhe acima da mï¿½dia.
+    -- A) Seleï¿½ï¿½o que exibe a saï¿½da de dados;
+    -- B) Filtro de exibiï¿½ï¿½o;
+    -- C) Juntar as instruï¿½ï¿½es;
 
 SELECT nome_ven, salario_fixo FROM vendedor
 WHERE salario_fixo > (SELECT AVG(salario_fixo) FROM vendedor);
 
 ----------------------------------
--- Funções de Grupo
+-- FUNÃ‡Ã•ES DE GRUPO
 ----------------------------------
 
--- Funções de Grupo - Analisam linhas e retornam um resultado apenas
+-- Funï¿½ï¿½es de Grupo - Analisam linhas e retornam um resultado apenas
 
 ----------------- GROUP BY -----------------
 
 -- Quantos clientes existem por UF?
 SELECT uf, COUNT(cod_clie) FROM cliente GROUP BY uf ORDER BY 1;
 
--- Quantos vendedores existem por comissão?
+-- Quantos vendedores existem por comissï¿½o?
 SELECT comissao, COUNT(cod_ven) FROM vendedor GROUP BY comissao;
 
 -- Quantos pedidos cada cliente possui?
@@ -148,6 +148,6 @@ GROUP BY num_pedido ORDER BY 1;
 ----------------- HAVING -----------------
 
 -- Quais clientes possuem mais de 1 pedido?
--- Condição usada na função count having condição
+-- Condiï¿½ï¿½o usada na funï¿½ï¿½o count having condiï¿½ï¿½o
 SELECT cod_clie, COUNT(num_pedido) FROM pedido GROUP BY cod_clie
 HAVING COUNT(num_pedido) > 1 ORDER BY 1;
