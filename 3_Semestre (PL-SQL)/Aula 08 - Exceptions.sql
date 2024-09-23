@@ -1,14 +1,14 @@
-Aula 08 - Exceptions
-(25/09/2023)
+-- Aula 08 - Exceptions
+-- (25/09/2023)
 
-Data da CP2 - (09/10/2023)
+-- Data da CP2 - (09/10/2023)
 
 -----------------------------------------
 
-EXCEPTIONS
+-- EXCEPTIONS
 
-Exception - Tratamento de erros 
-- pré definida
+-- Exception - Tratamento de erros 
+-- pré definida
 
 DECLARE
       ...
@@ -51,7 +51,6 @@ END;
 
 -----------------------------------------
 
-
 DECLARE
     V_RA ALUNO.RA%TYPE := 9;
     V_NOME ALUNO.NOME%TYPE;
@@ -61,10 +60,10 @@ BEGIN
 EXCEPTION
     WHEN others THEN
         DBMS_OUTPUT.PUT_LINE ('Não sei de nada, se vira');
-    /*WHEN NO_DATA_FOUND THEN
-          DBMS_OUTPUT.PUT_LINE ('Não há nenhum aluno com este RA');
-      WHEN TOO_MANY_ROWS THEN
-	  DBMS_OUTPUT.PUT_LINE ('Há mais de um aluno com este RA');*/
+    WHEN NO_DATA_FOUND THEN
+        DBMS_OUTPUT.PUT_LINE ('Não há nenhum aluno com este RA');
+    WHEN TOO_MANY_ROWS THEN
+	    DBMS_OUTPUT.PUT_LINE ('Há mais de um aluno com este RA');
 END;
 /
 
@@ -105,19 +104,20 @@ END;
 
 -----------------------------------------
 
-EXERCÍCIO
+-- EXERCÍCIO
 
-Criar as tabelas: Cliente, ContaCorrente, Movimentação para gerenciar as operações de uma CC, 
-deverão existir dois tipos de CC, as básicas que não permitem saques maiores que o saldo e as especiais
-que permitirão estes saques em até 50% do saldo naquele momento do saque.
-Vc deverá:
-Criar as tabelas para funcionamento do processo - movimentação de CC
-Criar os blocos de programação:
-- um para cadastro do cliente, sua conta.
-- um para cadastro da movimentação, créditos - C e débitos - D, sempre exibir o saldo após a movimentação.
-- um para saque, alertando se é possível ou não realizar o mesmo e exibir o saldo no momento.
-* não esqueça das exceptions
+-- Criar as tabelas: Cliente, ContaCorrente, Movimentação para gerenciar as operações de uma CC, 
+-- deverão existir dois tipos de CC, as básicas que não permitem saques maiores que o saldo e as especiais
+-- que permitirão estes saques em até 50% do saldo naquele momento do saque.
 
+-- Você deverá:
+-- Criar as tabelas para funcionamento do processo - movimentação de CC
+-- Criar os blocos de programação:
+-- - Um para cadastro do cliente, sua conta.
+-- - Um para cadastro da movimentação, créditos - C e débitos - D, sempre exibir 
+--   O saldo após a movimentação.
+-- - Um para saque, alertando se é possível ou não realizar o mesmo e exibir o saldo no momento.
+-- - Não esqueça das exceptions
 
 CREATE TABLE Cliente (
     cliente_id NUMBER PRIMARY KEY,
@@ -142,7 +142,6 @@ CREATE TABLE Movimentacao (
     saldo_anterior NUMBER,
     saldo_atual NUMBER
 );
-
 
 ---------------------------------------
 
@@ -171,7 +170,6 @@ END;
 /
 
 ---------------------------------------
-
 
 DECLARE
     v_conta_id NUMBER := 1;

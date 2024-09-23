@@ -1,14 +1,14 @@
-Aula 06 - Cursores
-(11/09/2023)
+-- Aula 06 - Cursores
+-- (11/09/2023)
 
-CHECKPOINT #2 - (02-10-23)
+-- CHECKPOINT #2 - (02-10-23)
 
 --------------------------
 
 -- EXERCÍCIO
 
-1º) Criar a seguinte Tabela e inserir os respectivos dados:
-funcionário
+-- 1º) Criar a seguinte Tabela e inserir os respectivos dados:
+-- funcionário
 
 DROP TABLE funcionario CASCADE CONSTRAINTS;
 
@@ -34,8 +34,8 @@ END;
 
 --------------------------
 
-1.1) Criar um bloco PL usando cursores para mostrar o nome do
-funcionário e seu salário. 
+-- 1.1) Criar um bloco PL usando cursores para mostrar o nome do
+-- funcionário e seu salário. 
 
 -- Sem a utilização de um cursor
 
@@ -50,7 +50,6 @@ BEGIN
      DBMS_OUTPUT.PUT_LINE(v_nome || ' - ' || v_sal);
 END;
 /
-
 
 --------------------
 
@@ -87,10 +86,10 @@ END;
 
 --------------------------
 
-2º) - Incluir na tabela funcionário a coluna tempo de tipo
-numérico, atualizar esta coluna com o tempo em dias
-que cada funcionário está trabalhando na empresa,
-lembrando que sysdate retorna a data do sistema;
+-- 2º) - Incluir na tabela funcionário a coluna tempo de tipo
+-- numérico, atualizar esta coluna com o tempo em dias
+-- que cada funcionário está trabalhando na empresa,
+-- lembrando que sysdate retorna a data do sistema;
 
 ALTER TABLE funcionario ADD tempo NUMBER(10);
 
@@ -106,9 +105,9 @@ END;
 
 --------------------------
 
-3º) Para os funcionários com tempo de serviço superior ou
-igual a 150 meses, adicionar 10% ao salário e para o
-restante 5%.
+-- 3º) Para os funcionários com tempo de serviço superior ou
+-- igual a 150 meses, adicionar 10% ao salário e para o
+-- restante 5%.
 
 DECLARE
     CURSOR C_exibe IS SELECT * FROM funcionario;
@@ -126,4 +125,3 @@ BEGIN
     END LOOP;
 END;
 /
-

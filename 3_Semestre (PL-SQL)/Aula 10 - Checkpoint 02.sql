@@ -1,4 +1,4 @@
-CHECKPOINT #2 - (09/10/23)
+-- CHECKPOINT #2 - (09/10/23)
 
 ----------------------------------------------------------------
 
@@ -35,10 +35,10 @@ CREATE TABLE ordem_tec (
 
 -- CRIANDO PROGRAMAS
 
-1) Criar um bloco PLSQL para cadastrar um novo técnico, ordem de
-serviço e a realização do serviço, caso o técnico, ou a Ordem de
-Serviço ou ainda sua realização já exista, informar em tela qual
-das informações já estão cadastradas.
+-- 1) Criar um bloco PLSQL para cadastrar um novo técnico, ordem de
+-- serviço e a realização do serviço, caso o técnico, ou a Ordem de
+-- Serviço ou ainda sua realização já exista, informar em tela qual
+-- das informações já estão cadastradas.
 
 DECLARE
     v_tec_id NUMBER(3);
@@ -83,9 +83,9 @@ END;
 
 ----------------------------------------------------------------
 
-2-) Criar um bloco PLSQL para calcular e exibir o nome do técnico,
-a OS(s) em que está alocado, o tempo que trabalhou, se ainda está na
-realização do serviço seu salário hoje.
+-- 2-) Criar um bloco PLSQL para calcular e exibir o nome do técnico,
+-- a OS(s) em que está alocado, o tempo que trabalhou, se ainda está na
+-- realização do serviço seu salário hoje.
 
 DECLARE
     v_tec_id NUMBER(3) := 2; 
@@ -144,8 +144,8 @@ END;
 
 ----------------------------------------------------------------
 
-3 ) Criar um bloco PLSQL para mostrar as Ordens de serviço com seus  
-técnicos e o período que trabalharam nelas ou se ainda estão trabalhando nelas.
+-- 3 ) Criar um bloco PLSQL para mostrar as Ordens de serviço com seus  
+-- técnicos e o período que trabalharam nelas ou se ainda estão trabalhando nelas.
 
 DECLARE
     v_os_id number(3);
@@ -196,4 +196,3 @@ BEGIN
     END LOOP;
 END;
 /
-

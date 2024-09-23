@@ -1,5 +1,5 @@
-Aula 07 - Cursores
-(18/09/2023)
+-- Aula 07 - Cursores
+-- (18/09/2023)
 
 --------------------------
 
@@ -26,10 +26,10 @@ END;
 
 --------------------------
 
-1- ) Incluir na tabela funcionário a coluna tempo de tipo 
-numérico, atualizar esta coluna com o tempo em dias 
-que cada funcionário está trabalhando na empresa, 
-lembrando que sysdate retorna a data do sistema
+-- 1- ) Incluir na tabela funcionário a coluna tempo de tipo 
+-- numérico, atualizar esta coluna com o tempo em dias 
+-- que cada funcionário está trabalhando na empresa, 
+-- lembrando que sysdate retorna a data do sistema
 
 ALTER TABLE funcionario ADD tempo NUMBER(5)
 
@@ -46,9 +46,9 @@ SELECT * FROM funcionario;
 
 --------------------------
 
-2- ) Para os funcionários com tempo de serviço superior ou 
-igual a 150 meses, adicionar 10% ao salário e para o 
-restante 5%.
+-- 2- ) Para os funcionários com tempo de serviço superior ou 
+-- igual a 150 meses, adicionar 10% ao salário e para o 
+-- restante 5%.
 
 SET SERVEROUTPUT ON
 DECLARE
@@ -64,7 +64,6 @@ BEGIN
           SET salario = salario * 1.05 
           WHERE cd_fun = v_exibe.cd_fun;
       END IF;*/
-
       DBMS_OUTPUT.PUT_LINE(v_exibe.tempo / 30);
     END LOOP;
 END;
@@ -94,4 +93,3 @@ END;
 /
 
 SELECT * FROM funcionario;
-

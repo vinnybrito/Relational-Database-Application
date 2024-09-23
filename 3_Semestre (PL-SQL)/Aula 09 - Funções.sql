@@ -1,5 +1,5 @@
-Aula 09 - Funções
-(02/10/23)
+-- Aula 09 - Funções
+-- (02/10/23)
 
 ------------------------------------------
 
@@ -83,4 +83,3 @@ BEGIN
     DBMS_OUTPUT.PUT_LINE('Resultado: ' || resul);
 END;
 /
-

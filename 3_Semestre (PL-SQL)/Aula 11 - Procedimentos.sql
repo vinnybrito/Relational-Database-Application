@@ -1,14 +1,14 @@
-Aula 11 - Procedures
-(16/10/2023)
+-- Aula 11 - Procedures
+-- (16/10/2023)
 
 ------------------------------------------
 
-Datas de Provas e atividades
+-- Datas de Provas e atividades
 
-CP3 - 06/11/2023
-GS - 21/11 a 01/12
-DP - 21/11 a 01/12 
-Sub - 04/12 a 08/12
+-- CP3 - (06/11/2023)
+-- GS - (21/11 a 01/12)
+-- DP - (21/11 a 01/12)
+-- Sub - (04/12 a 08/12)
 
 ------------------------------------------
 
@@ -69,17 +69,17 @@ EXEC proc_nome_aluno(1);
 
 ------------------------------------------
 
-EXERCÍCIO:
+-- EXERCÍCIO:
 
-1-) Criar um bloco de programação que permita a entrada do código do produto
-para compra, esse código deverá verificar se o produto existe através de uma
-ou mais exceções, após a validação da existÊncia do produto permitir a 
-entrada da quantidade a ser comprada, tb será necessário verificar se a 
-quantidade solicitada existe, use a lógica para isso,  para realizar a baixa 
-de estoque crie uma função que calcule esta baixa e o custo da venda, crie 
-um procedimento para mostrar em tela o código do produto, sua descrição, 
-preço unitário, quantidade comprada e o valor da venda.
-Criar uma tabela de nome produto, alimentar com 10 linhas de dados.
+-- 1-) Criar um bloco de programação que permita a entrada do código do produto
+-- para compra, esse código deverá verificar se o produto existe através de uma
+-- ou mais exceções, após a validação da existÊncia do produto permitir a 
+-- entrada da quantidade a ser comprada, tb será necessário verificar se a 
+-- quantidade solicitada existe, use a lógica para isso,  para realizar a baixa 
+-- de estoque crie uma função que calcule esta baixa e o custo da venda, crie 
+-- um procedimento para mostrar em tela o código do produto, sua descrição, 
+-- preço unitário, quantidade comprada e o valor da venda.
+-- Criar uma tabela de nome produto, alimentar com 10 linhas de dados.
 
 SET VERIFY OFF
 
@@ -124,4 +124,3 @@ EXCEPTION
         DBMS_OUTPUT.PUT_LINE('Código inexistente');
 END;
 /
-
