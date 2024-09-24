@@ -94,7 +94,10 @@ COMMIT;
 -- Questões
 
 -- 1ª) Mostre quantos fabricantes diferentes estão cadastrados.
-SELECT COUNT(DISTINCT fabricante) "Fabricantes cadastrados" FROM automovel;
+SELECT 
+    COUNT(DISTINCT fabricante) "Fabricantes cadastrados" 
+FROM 
+    Automovel;
 
 -- 2ª) Mostre quais revendedoras vendem o modelo Xantia.
 SELECT 
@@ -180,4 +183,4 @@ WHERE
     r.Nome = 'Automodelo';
 
 -- 10ª) Mostar os dados dos consumidores.
-SELECT * FROM consumidor;
+SELECT * FROM Consumidor;

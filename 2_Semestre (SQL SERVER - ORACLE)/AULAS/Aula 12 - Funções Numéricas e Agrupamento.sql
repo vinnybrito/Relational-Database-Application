@@ -1,7 +1,7 @@
--- Aula 12 - Fun��es Num�ricas e Agrupamento
+-- Aula 12 - Funcoes Numuricas e Agrupamento
 -- (03-Mai-2023)
 
--- Fun��es Num�ricas Simples:
+-- Funcoes Numuricas Simples:
 -- COUNT, SUM, AVG, ROUND, TRUNC, MAX, MIN;
 
 -- Tabelas da Atividade 04
@@ -26,7 +26,7 @@ SELECT COUNT(cod_clie), COUNT(cep) FROM cliente;
 
 ----------------- SUM -----------------
 
--- Somat�ria de valores em colunas
+-- Somatoria de valores em colunas
 -- Exemplo: SUM(coluna);
 
 -- Qual o custo da folha de pagamento?
@@ -34,19 +34,23 @@ SELECT SUM(salario_fixo) FROM vendedor;
 
 ----------------- AVG -----------------
 
--- C�lculo da m�dia dos valores em colunas
+-- Calculo da media dos valores em colunas
 -- Exemplo: AVG(coluna);
 
--- Qual a m�dia salarial dos vendedores?
+-- Qual a media salarial dos vendedores?
 SELECT ROUND(AVG(salario_fixo),2) FROM vendedor;
 
 ------------ ROUND & TRUNC ------------
 
-ROUND - Arredondamento, 1� posi��o ap�s limite >= 5, + 1 a esquerda;
+ROUND - Arredondamento, 1 posicao apos limite >= 5, + 1 a esquerda;
 TRUNC - Despreza casas decimais, sem arredondamento;
 
-SELECT salario_fixo/1.3, ROUND(salario_fixo/1.3,2),
-TRUNC(salario_fixo/1.3,2) FROM vendedor;
+SELECT 
+    salario_fixo / 1.3, 
+    ROUND(salario_fixo / 1.3,2),
+    TRUNC(salario_fixo/ 1.3,2) 
+FROM 
+    Vendedor;
 
 ----------------- MAX -----------------
 
@@ -67,16 +71,17 @@ SELECT MAX(nome_clie) FROM cliente;
 
 -- Qual o menor sal�rio cadastrado na tabela vendedor?
 SELECT MIN(salario_fixo) FROM vendedor;
+
 SELECT salario_fixo FROM vendedor ORDER BY 1;
 
 ---------------------------
 -- EXEMPLOS
 ---------------------------
 
--- Crie um relat�rio que mostre o maior e o menor pre�o existente na tabela produto
-SELECT MAX(val_unit) "Maior Pre�o", MIN(val_unit) "Menor Pre�o" FROM produto;
+-- Crie um relatorio que mostre o maior e o menor preco existente na tabela produto
+SELECT MAX(val_unit) "Maior Preco", MIN(val_unit) "Menor Preco" FROM produto;
 
--- Crie um relat�rio que mostre quantos clientes moram em S�o Paulo.
+-- Crie um relatorio que mostre quantos clientes moram em Sao Paulo.
 SELECT COUNT(cod_clie) "Total de clientes em SP" FROM cliente 
 WHERE uf = 'SP';
 
@@ -118,8 +123,13 @@ WHERE salario_fixo IN (SELECT MAX(salario_fixo) FROM vendedor);
     -- B) Filtro de exibi��o;
     -- C) Juntar as instru��es;
 
-SELECT nome_ven, salario_fixo FROM vendedor
-WHERE salario_fixo > (SELECT AVG(salario_fixo) FROM vendedor);
+SELECT 
+    nome_ven, 
+    salario_fixo 
+FROM 
+    Vendedor
+WHERE 
+    salario_fixo > (SELECT AVG(salario_fixo) FROM vendedor);
 
 ----------------------------------
 -- FUNÇÕES DE GRUPO
@@ -148,6 +158,12 @@ GROUP BY num_pedido ORDER BY 1;
 ----------------- HAVING -----------------
 
 -- Quais clientes possuem mais de 1 pedido?
--- Condi��o usada na fun��o count having condi��o
-SELECT cod_clie, COUNT(num_pedido) FROM pedido GROUP BY cod_clie
+-- Condicao usada na funcao count having condicao
+SELECT 
+    cod_clie, 
+    COUNT(num_pedido) 
+FROM 
+    pedido 
+GROUP BY 
+    cod_clie
 HAVING COUNT(num_pedido) > 1 ORDER BY 1;
