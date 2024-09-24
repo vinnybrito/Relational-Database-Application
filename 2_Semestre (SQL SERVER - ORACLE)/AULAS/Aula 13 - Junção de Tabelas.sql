@@ -1,19 +1,19 @@
--- Aula 13 - Junï¿½ï¿½o de Tabelas 
+-- Aula 13 - Jun??o de Tabelas 
 -- (10-Mai-2023)
 
--- FUNÃ‡Ã•ES DE DATAS
+-- FUNÇÕES DE DATAS
 -- Data do sistema: sysdate
 
 ----------------- SYSDATE -----------------
 
--- Exibindo a data do sistema - vendo o padrï¿½o atual
+-- Exibindo a data do sistema - vendo o padr?o atual
 SELECT sysdate FROM dual;
 
 -- Tabela da atividade 04
 SELECT * FROM vendedor;
 
 -- Criar as colunas dt_adm e dt_dem na tabela vendedor e incluir a data de hoje nelas
--- default sysdate, significa inserir a data do sistema na criaï¿½ï¿½o da coluna.
+-- default sysdate, significa inserir a data do sistema na cria??o da coluna.
 
 ALTER TABLE vendedor ADD dt_adm DATE DEFAULT sysdate;
 ALTER TABLE vendedor ADD dt_dem DATE DEFAULT sysdate;
@@ -21,113 +21,181 @@ ALTER TABLE vendedor ADD dt_dem DATE DEFAULT sysdate;
 ----------------------------------
 
 -- PROCESSAMENTO COM DATAS: 
-    data + nï¿½mero = data
-    data - nï¿½mero = data
-    data - data = nï¿½mero
+    data + numero = data
+    data - numero = data
+    data - data = numero
 
 SELECT sysdate, sysdate + 400, sysdate - 400 FROM dual;
 
--- Subtrair 3580 dias da data de admissï¿½o dos vendedores de comissï¿½o A.
+-- Subtrair 3580 dias da data de admiss?o dos vendedores de comiss?o A.
 UPDATE vendedor SET dt_adm = dt_adm - 3580 
 WHERE comissao = 'A';
 
 SELECT * FROM vendedor ORDER BY comissao;
 
--- Subtrair 6580 dias da data de admissï¿½o dos vendedores de comissï¿½o B
+-- Subtrair 6580 dias da data de admiss?o dos vendedores de comiss?o B
 UPDATE vendedor SET dt_adm = dt_adm - 6580 
 WHERE comissao = 'B';
 
--- Subtrair 13580 dias da data de admissï¿½o dos vendedores de comissï¿½o C
+-- Subtrair 13580 dias da data de admiss?o dos vendedores de comiss?o C
 UPDATE vendedor SET dt_adm = dt_adm - 13580 
 WHERE comissao = 'C';
 
--- Subtrair 18 dias da data de demissï¿½o do vendedor Felipe 
+-- Subtrair 18 dias da data de demiss?o do vendedor Felipe 
 UPDATE vendedor SET dt_dem = dt_dem - 18 
 WHERE nome_ven IN 'Felipe';
 
--- Apagar o conteï¿½do da coluna data de demisï¿½o dos vendedores de cï¿½digo: 101 a 310 (inclusive)
+-- Apagar o conte?do da coluna data de demis?o dos vendedores de c?digo: 101 a 310 (inclusive)
 UPDATE vendedor SET dt_adm = NULL 
 WHERE cod_ven BETWEEN 101 AND 310;
 
--- Subtrair 67 dias da data de demissï¿½o do vendedor Joao de cï¿½digo 11.
+-- Subtrair 67 dias da data de demiss?o do vendedor Joao de c?digo 11.
 UPDATE vendedor SET dt_dem = dt_dem - 67 
 WHERE nome_ven = 'Joao' AND cod_ven = 11;
 COMMIT;
 
--- Crie um relatï¿½rio que exiba o tempo de cada funcionï¿½rio na empresa, 
--- mostre seu nome e tempo. Mostre os funcionï¿½rios que trabalham na 
+-- Crie um relatorio que exiba o tempo de cada funcionario na empresa, 
+-- mostre seu nome e tempo. Mostre os funcionarios que trabalham na 
 -- empresa a mais de 5 anos, exibe nome e tempo.
 
 ----------------------------------
--- JUNï¿½ï¿½O DE TABELAS
+-- JUNCAO DE TABELAS
 ----------------------------------
--- Consultas usando dados demais de uma tabela atravï¿½s do relacionamento.
+-- Consultas usando dados demais de uma tabela atraves do relacionamento.
 
--- 1) Criar um relatï¿½rio que mostre o nome dos funcionï¿½rios e seus cargos(nome)
--- junï¿½ï¿½o por igualdade ou equivalï¿½ncia - inner join
+DROP TABLE Cargo CASCADE CONSTRAINTS;
+DROP TABLE Funcionario CASCADE CONSTRAINTS;
 
-SELECT nm_fun, nm_cargo FROM cargo 
-INNER JOIN funcionario ON cd_cargo = cargo_fk;
+CREATE TABLE Cargo (
+    cd_cargo NUMBER(2) PRIMARY KEY,
+    nm_cargo VARCHAR2(20) NOT NULL,
+    salario NUMBER(8,2)
+);
+
+CREATE TABLE Funcionario (
+    id_fun NUMBER(2) NOT NULL,
+    nm_fun VARCHAR2(20) NOT NULL,
+    cargo_fk NUMBER(2) REFERENCES Cargo (cd_cargo)
+);
+
+INSERT INTO Cargo VALUES (1, 'Prg. Web', 4500);
+INSERT INTO Cargo VALUES (2, 'DBA', 12000);
+INSERT INTO Cargo VALUES (3, 'Analista Dados', 8000);
+
+INSERT INTO Funcionario VALUES (10, 'Marcel', 1);
+INSERT INTO Funcionario VALUES (11, 'Claudio', 2);
+INSERT INTO Funcionario VALUES (12, 'Amanda', 2);
+INSERT INTO Funcionario VALUES (13, 'Samantha', NULL);
+COMMIT;
+
+-- 1) Criar um relatorio que mostre o nome dos funcionarios e seus cargos(nome)
+-- juncaoo por igualdade ou equivalencia - inner join
+
+SELECT 
+    nm_fun "Funcionario", 
+    nm_cargo "Cargo"
+FROM 
+    Cargo 
+INNER JOIN 
+    Funcionario ON cd_cargo = cargo_fk;
 
 ------------------------------------
 
--- 2) Exiba os cargos com seus funcionï¿½rios e caso exista um cargo que nï¿½o tenha conexï¿½o
--- com algum funcionï¿½rio,mostre ele tb.
+-- 2) Exiba os cargos com seus funcionarios e caso exista um cargo que nao tenha conexao
+-- com algum funcionario, mostre ele tambem.
 /*
-    Junï¿½ï¿½o por equivalï¿½ncia e diferenï¿½a ao mesmo tempo - esquerda ou direita - 
-    left join ou right join.
+    Juncao por equivalencia e diferenca ao mesmo tempo - esquerda ou direita - 
+    LEFT JOIN ou RIGHT JOIN.
 */
 
-SELECT * FROM cargo;
-SELECT * FROM funcionario;
-
-SELECT nm_fun, nm_cargo FROM cargo 
-LEFT JOIN funcionario ON cd_cargo = cargo_fk;
-
-------------------------------------
-
--- 3) Exiba os cargos com seus funcionï¿½rios e caso exista um funcionï¿½rio 
--- que nï¿½o tenha conexï¿½o com algum cargo, mostre ele tb.
-
-SELECT nm_fun, nm_cargo FROM cargo 
-RIGHT JOIN funcionario ON cd_cargo = cargo_fk;
+SELECT 
+    nm_fun "Funcionario", 
+    nm_cargo "Cargo"
+FROM 
+    Cargo 
+LEFT JOIN 
+    Funcionario ON cd_cargo = cargo_fk;
 
 ------------------------------------
 
--- 4) Criar um relatï¿½rio que mostre a diferenï¿½a entre as tabelas
--- left ou right + pesquisa sobre conteï¿½do null na fk.
+-- 3) Exiba os cargos com seus funcionarios e caso exista um funcionario 
+-- que nao tenha conexao com algum cargo, mostre ele tambem.
 
-SELECT nm_fun, nm_cargo FROM cargo 
-RIGHT JOIN funcionario ON cd_cargo = cargo_fk
+SELECT 
+    nm_fun "Funcionario", 
+    nm_cargo "Cargo"
+FROM 
+    Cargo 
+RIGHT JOIN 
+    Funcionario ON cd_cargo = cargo_fk;
+
+------------------------------------
+
+-- 4) Criar um relatorio que mostre a diferenca entre as tabelas
+-- LEFT ou RIGHT + pesquisa sobre conteudo NULL na FK.
+
+SELECT 
+    nm_fun "Funcionario", 
+    nm_cargo "Cargo"
+FROM 
+    Cargo 
+RIGHT JOIN 
+    Funcionario ON cd_cargo = cargo_fk
 WHERE cargo_fk IS NULL;
 
-SELECT nm_fun, nm_cargo FROM cargo 
-LEFT JOIN funcionario ON cd_cargo = cargo_fk
+---
+
+SELECT 
+    nm_fun "Funcionario", 
+    nm_cargo "Cargo"
+FROM 
+    Cargo 
+LEFT JOIN 
+    Funcionario ON cd_cargo = cargo_fk
 WHERE cargo_fk IS NULL;
 
--- Ou tudo em um ï¿½nico relatï¿½rio.
-SELECT nm_fun, nm_cargo FROM cargo 
-FULL OUTER JOIN funcionario ON cd_cargo = cargo_fk
+---
+
+-- Ou tudo em um unico relatorio.
+SELECT 
+    nm_fun "Funcionario", 
+    nm_cargo "Cargo"
+FROM 
+    Cargo 
+FULL OUTER JOIN 
+    Funcionario ON cd_cargo = cargo_fk
 WHERE cargo_fk IS NULL;
 
 ------------------------------------
 
 -- 5) Exiba o nome do cliente e o seu pedido
-SELECT nome_clie, num_pedido FROM cliente
+SELECT 
+    nome_clie "Cliente", 
+    num_pedido 
+FROM 
+    Cliente
 INNER JOIN pedido ON cod_clie = cod_clie;
 
-DESC cliente;
+DESC Cliente;
 
 -- 6) Exiba o nome do vendedor e o seu pedido
-SELECT nome_ven, num_pedido FROM vendedor
-INNER JOIN pedido ON pedido.cod_ven = vendedor.cod_ven;
+SELECT 
+    nome_ven "Vendedor", 
+    num_pedido "Pedido"
+FROM 
+    Vendedor
+INNER JOIN 
+    Pedido ON Pedido.cod_ven = Vendedor.cod_ven;
 
 -- 7) Exiba o nome do cliente, do vendedor e o seu pedido
 SELECT 
-        nome_ven, 
-        num_pedido, 
-        nome_clie 
-FROM pedido
-INNER JOIN vendedor ON pedido.cod_ven = vendedor.cod_ven
-INNER JOIN cliente ON pedido.cod_clie = cliente.cod_clie;
+    nome_ven "Vendedor", 
+    num_pedido "Pedido", 
+    nome_clie "Cliente
+FROM 
+    Pedido
+INNER JOIN 
+    Vendedor ON Pedido.cod_ven = Vendedor.cod_ven
+INNER JOIN 
+    Cliente ON Pedido.cod_clie = Cliente.cod_clie;
 

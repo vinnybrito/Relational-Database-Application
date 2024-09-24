@@ -12,6 +12,9 @@ SELECT = sele��o
 FROM = origem dos dados
 nome_tabela = tabela destino do relat�rio
 
+-- Os exemplos abaixo são referênte as tabelas criadas
+-- na atividade 04
+
 ------------------------------------
 -- EXEMPLOS: 
 ------------------------------------
