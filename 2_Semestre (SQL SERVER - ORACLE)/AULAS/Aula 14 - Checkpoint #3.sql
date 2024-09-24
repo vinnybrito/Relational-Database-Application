@@ -97,43 +97,87 @@ COMMIT;
 SELECT COUNT(DISTINCT fabricante) "Fabricantes cadastrados" FROM automovel;
 
 -- 2ª) Mostre quais revendedoras vendem o modelo Xantia.
-SELECT nome "REVENDEDORA" FROM revendedora
-INNER JOIN negocio ON revendedora.cnpj = negocio.revenda
-INNER JOIN Automovel ON negocio.CodAuto = automovel.Codigo
-WHERE automovel.modelo = 'Xantia';
+SELECT 
+    nome "REVENDEDORA" 
+FROM 
+    Revendedora
+INNER JOIN 
+    Negocio ON Revendedora.cnpj = Negocio.revenda
+INNER JOIN 
+    Automovel ON Negocio.CodAuto = Automovel.codigo
+WHERE 
+    Automovel.modelo = 'Xantia';
 
 -- 3ª) Mostre o nome e a cidade do revendedor que não possuí veículo francês.
-SELECT Nome "Nome", cidade "CIDADE" FROM revendedora
-LEFT JOIN negocio ON revendedora.cnpj = negocio.revenda
-LEFT JOIN automovel ON negocio.CodAuto = automovel.codigo
-WHERE automovel.pais <> 'Franca' OR automovel.pais IS NULL;
+SELECT 
+    nome "Nome", 
+    cidade "Cidade" 
+FROM 
+    Revendedora
+LEFT JOIN 
+    Negocio ON Revendedora.cnpj = Negocio.revenda
+LEFT JOIN 
+    Automovel ON Negocio.CodAuto = Automovel.codigo
+WHERE 
+    Automovel.pais <> 'Franca' OR Automovel.pais IS NULL;
 
 -- 4ª) Mostre o maior e o menor preço de tabela dos veículos.
-SELECT MAX(preco_tabela) "Maior preço", MIN(preco_tabela) "Menor preço" FROM automovel;
+SELECT 
+    MAX(preco_tabela) "Maior preço", 
+    MIN(preco_tabela) "Menor preço" 
+FROM 
+    Automovel;
 
 -- 5ª) Mostre o nome, modelo dos veículos, preço da tabela, preço da tabela com aumento de 10%.
-SELECT Fabricante, Modelo, Preco_tabela, (Preco_tabela * 1.1) "TABELA_COM_AUMENTO"
-FROM Automovel;
+SELECT 
+    Fabricante, 
+    Modelo, 
+    Preco_tabela, 
+    (Preco_tabela * 1.1) "TABELA_COM_AUMENTO"
+FROM 
+    Automovel;
 
 -- 6ª) Exiba a quantidade de carros comprados por Consumidor.
-SELECT nome, COUNT(Negocio.CodAuto) "CARROS_COMPRADOS" FROM consumidor
-LEFT JOIN negocio ON consumidor.identidade = negocio.comprador
+SELECT 
+    nome, 
+    COUNT(Negocio.CodAuto) "CARROS_COMPRADOS" 
+FROM 
+    Consumidor
+LEFT JOIN 
+    Negocio ON Consumidor.identidade = Negocio.comprador
 GROUP BY nome;
 
 -- 7ª) Listar os automóveis italianos e japoneses ordenados por código (crescente), ano e preço de tabela.
-SELECT * FROM automovel
-WHERE pais IN ('Italia', 'Japao')
+SELECT * FROM 
+    Automovel
+WHERE 
+    pais IN ('Italia', 'Japao')
 ORDER BY 1, 4, 6 ASC;
 
 -- 8ª) Qual o carro de preço de tabela é o mais caro?
-SELECT modelo, preco_tabela FROM automovel
-WHERE preco_tabela = (SELECT MAX(preco_tabela) FROM automovel);
+SELECT 
+    modelo, 
+    preco_tabela 
+FROM 
+    Automovel
+WHERE 
+    preco_tabela = (
+        SELECT 
+            MAX(preco_tabela) 
+        FROM 
+            Automovel
+    );
 
 -- 9ª) Qual seria o lucro da revendedora Automodelo caso tivesse vendido seus carros por um valor 10%
 -- maior, supondo os preços de tabela estáveis?
-SELECT SUM((n.Preco * 0.1)) "LUCRO_REVENDEDORA" FROM Negocio n
-INNER JOIN Revendedora r ON n.Revenda = r.Cnpj
-WHERE r.Nome = 'Automodelo';
+SELECT 
+    SUM((n.Preco * 0.1)) "LUCRO_REVENDEDORA" 
+FROM 
+    Negocio n
+INNER JOIN 
+    Revendedora r ON n.Revenda = r.Cnpj
+WHERE 
+    r.Nome = 'Automodelo';
 
 -- 10ª) Mostar os dados dos consumidores.
 SELECT * FROM consumidor;

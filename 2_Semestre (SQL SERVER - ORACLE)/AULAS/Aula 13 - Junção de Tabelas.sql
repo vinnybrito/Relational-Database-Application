@@ -1,7 +1,7 @@
 -- Aula 13 - Jun??o de Tabelas 
 -- (10-Mai-2023)
 
--- FUNÇÕES DE DATAS
+-- FUNï¿½ï¿½ES DE DATAS
 -- Data do sistema: sysdate
 
 ----------------- SYSDATE -----------------
@@ -141,7 +141,8 @@ FROM
     Cargo 
 RIGHT JOIN 
     Funcionario ON cd_cargo = cargo_fk
-WHERE cargo_fk IS NULL;
+WHERE 
+    cargo_fk IS NULL;
 
 ---
 
@@ -152,7 +153,8 @@ FROM
     Cargo 
 LEFT JOIN 
     Funcionario ON cd_cargo = cargo_fk
-WHERE cargo_fk IS NULL;
+WHERE 
+    cargo_fk IS NULL;
 
 ---
 
@@ -164,7 +166,8 @@ FROM
     Cargo 
 FULL OUTER JOIN 
     Funcionario ON cd_cargo = cargo_fk
-WHERE cargo_fk IS NULL;
+WHERE 
+    cargo_fk IS NULL;
 
 ------------------------------------
 
@@ -191,7 +194,7 @@ INNER JOIN
 SELECT 
     nome_ven "Vendedor", 
     num_pedido "Pedido", 
-    nome_clie "Cliente
+    nome_clie "Cliente"
 FROM 
     Pedido
 INNER JOIN 
